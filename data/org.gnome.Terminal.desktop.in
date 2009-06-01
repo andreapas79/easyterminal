@@ -10,6 +10,7 @@ Categories=GNOME;GTK;System;TerminalEmulator;
 StartupNotify=true
 StartupWMClass=Gnome-terminal
 X-GNOME-SingleWindow=false
+OnlyShowIn=GNOME;Unity;
 Actions=new-window;preferences;
 
 [Desktop Action new-window]

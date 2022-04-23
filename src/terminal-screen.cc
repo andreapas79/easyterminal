@@ -1131,10 +1131,8 @@ terminal_screen_profile_changed_cb (GSettings     *profile,
 
   if ((window = terminal_screen_get_window (screen)))
     {
-      /* We need these in line for the set_size in
-       * update_on_realize
-       */
-      terminal_window_update_geometry (window);
+      // Don't update on Pop
+      // terminal_window_update_geometry (window);
     }
 
   if (!prop_name || prop_name == I_(TERMINAL_PROFILE_SCROLLBAR_POLICY_KEY))

@@ -2228,10 +2228,11 @@ terminal_window_init (TerminalWindow *window)
   g_signal_connect_after (priv->mdi_container, "screens-reordered",
                           G_CALLBACK (mdi_screens_reordered_cb), window);
 
-  g_signal_connect_swapped (priv->mdi_container, "notify::tab-pos",
-                            G_CALLBACK (terminal_window_update_geometry), window);
-  g_signal_connect_swapped (priv->mdi_container, "notify::show-tabs",
-                            G_CALLBACK (terminal_window_update_geometry), window);
+  // Don't update on Pop
+  // g_signal_connect_swapped (priv->mdi_container, "notify::tab-pos",
+  //                          G_CALLBACK (terminal_window_update_geometry), window);
+  // g_signal_connect_swapped (priv->mdi_container, "notify::show-tabs",
+  //                          G_CALLBACK (terminal_window_update_geometry), window);
 
   /* FIXME hack hack! */
   if (GTK_IS_NOTEBOOK (priv->mdi_container)) {
@@ -2691,6 +2692,9 @@ terminal_window_update_size (TerminalWindow *window)
        * around otherwise tiled windows. */
       return;
     }
+
+  // Never resize on Pop
+  return;
 
   /* be sure our geometry is up-to-date */
   terminal_window_update_geometry (window);

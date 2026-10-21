@@ -18,6 +18,8 @@
 #include "config.h"
 
 #include "terminal-name-dialog.hh"
+#include <glib/gi18n.h>
+
 #include "terminal-intl.hh"
 
 typedef struct {
@@ -33,6 +35,13 @@ name_dialog_data_free (NameDialogData *data)
   if (data->destroy_notify)
     data->destroy_notify (data->user_data);
   g_free (data);
+}
+
+static void
+name_dialog_data_closure_notify (gpointer data,
+                                 GClosure *closure)
+{
+  name_dialog_data_free ((NameDialogData*)data);
 }
 
 static void
@@ -94,7 +103,7 @@ terminal_name_dialog_show (GtkWindow                 *parent,
 
   g_signal_connect_data (dialog, "response",
                          G_CALLBACK (name_dialog_response_cb),
-                         data, (GClosureNotify) name_dialog_data_free,
+                         data, name_dialog_data_closure_notify,
                          GConnectFlags(0));
 
   gtk_window_present (GTK_WINDOW (dialog));

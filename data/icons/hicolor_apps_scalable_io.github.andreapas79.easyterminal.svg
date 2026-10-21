@@ -40,11 +40,11 @@
       <stop
          id="stop1944"
          offset="0"
-         style="stop-color:#2d2839;stop-opacity:1;" />
+         style="stop-color:#14523f;stop-opacity:1;" />
       <stop
          id="stop1946"
          offset="1"
-         style="stop-color:#282433;stop-opacity:1" />
+         style="stop-color:#0f4636;stop-opacity:1" />
     </linearGradient>
     <linearGradient
        id="linearGradient1020">
@@ -210,7 +210,7 @@
          height="87.999969"
          width="96"
          id="rect1004"
-         style="display:inline;opacity:1;vector-effect:none;fill:#241f31;fill-opacity:1;stroke:none;stroke-width:0.01121096px;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;marker:none;marker-start:none;marker-mid:none;marker-end:none;paint-order:normal;enable-background:new" />
+         style="display:inline;opacity:1;vector-effect:none;fill:#0b3d2e;fill-opacity:1;stroke:none;stroke-width:0.01121096px;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;marker:none;marker-start:none;marker-mid:none;marker-end:none;paint-order:normal;enable-background:new" />
       <rect
          transform="scale(-1)"
          style="display:inline;opacity:0.05;vector-effect:none;fill:url(#radialGradient1030);fill-opacity:1;stroke:none;stroke-width:0.01121096px;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;marker:none;marker-start:none;marker-mid:none;marker-end:none;paint-order:normal;enable-background:new"

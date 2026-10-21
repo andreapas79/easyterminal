@@ -1,7 +1,7 @@
-data/org.gnome.Terminal.Nautilus.metainfo.xml.in
-data/org.gnome.Terminal.desktop.in
-data/org.gnome.Terminal.metainfo.xml.in
-src/org.gnome.Terminal.gschema.xml
+data/io.github.andreapas79.easyterminal.Nautilus.metainfo.xml.in
+data/io.github.andreapas79.easyterminal.desktop.in
+data/io.github.andreapas79.easyterminal.metainfo.xml.in
+src/io.github.andreapas79.easyterminal.gschema.xml
 src/preferences.ui
 src/profile-editor.cc
 src/search-popover.ui
@@ -12,6 +12,7 @@ src/terminal-headerbar.cc
 src/terminal-headerbar.ui
 src/terminal-headermenu.ui
 src/terminal-mdi-container.cc
+src/terminal-name-dialog.cc
 src/terminal-menu-button.cc
 src/terminal-menubar.ui.in
 src/terminal-nautilus.cc

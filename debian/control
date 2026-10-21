@@ -1,0 +1,40 @@
+Source: easyterminal
+Section: gnome
+Priority: optional
+Maintainer: andreapas79 <61280317+andreapas79@users.noreply.github.com>
+Build-Depends: debhelper-compat (= 13),
+               meson (>= 0.49),
+               ninja-build,
+               pkg-config,
+               gettext,
+               libglib2.0-dev (>= 2.52),
+               libgtk-3-dev (>= 3.22.27),
+               libvte-2.91-dev (>= 0.68.0),
+               libdconf-dev,
+               gsettings-desktop-schemas-dev,
+               libpcre2-dev,
+               uuid-dev,
+               libx11-dev,
+               xsltproc,
+               docbook-xsl,
+               docbook-xml,
+               libxml2-utils,
+               desktop-file-utils
+Standards-Version: 4.6.0
+Rules-Requires-Root: no
+Homepage: https://gitlab.gnome.org/GNOME/gnome-terminal
+
+Package: easyterminal
+Architecture: any
+Depends: ${shlibs:Depends},
+         ${misc:Depends},
+         gsettings-desktop-schemas,
+         dconf-gsettings-backend | gsettings-backend
+Description: GNOME Terminal 3.44 fork with renamable tabs and tab groups
+ EasyTerminal is a personal fork of GNOME Terminal 3.44 that adds
+ renamable tabs (the name wins over titles set by programs) and named,
+ collapsible tab groups managed from the tab context menu.
+ .
+ It installs next to gnome-terminal and shares nothing with it: own
+ application ID (io.github.andreapas79.easyterminal), binaries, settings,
+ D-Bus service and systemd user unit.

@@ -31,7 +31,7 @@
   <refentryinfo>
     <title>easyterminal</title>
     <date>June 2020</date>
-    <productname>GNOME</productname>
+    <productname>EasyTerminal</productname>
   </refentryinfo>
 
   <refmeta>
@@ -42,7 +42,7 @@
 
   <refnamediv>
     <refname>easyterminal</refname>
-    <refpurpose>A terminal emulator for GNOME</refpurpose>
+    <refpurpose>GNOME Terminal fork with renamable tabs and tab groups</refpurpose>
   </refnamediv>
 
   <refsynopsisdiv>

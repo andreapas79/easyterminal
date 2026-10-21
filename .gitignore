@@ -1,2 +1,8 @@
 build/
-build-*.log
+/obj-*/
+/debian/.debhelper/
+/debian/easyterminal/
+/debian/files
+/debian/*.substvars
+/debian/*.log
+/debian/debhelper-build-stamp

@@ -412,7 +412,7 @@ test_regex = executable(
 )
 
 test_env = [
-  'GNOME_TERMINAL_DEBUG=0',
+  'EASYTERMINAL_DEBUG=0',
   'VTE_DEBUG=0',
 ]
 

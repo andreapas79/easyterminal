@@ -1,0 +1,7 @@
+easyterminal (3.44.0-1easy1) jammy; urgency=medium
+
+  * Fork of GNOME Terminal 3.44.0 rebranded as EasyTerminal.
+  * Rename Tab: a user-set tab name that wins over program titles.
+  * Named, collapsible tab groups from the tab context menu.
+
+ -- andreapas79 <61280317+andreapas79@users.noreply.github.com>  Wed, 21 Oct 2026 20:00:00 +0200

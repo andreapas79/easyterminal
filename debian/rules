@@ -1,0 +1,15 @@
+#!/usr/bin/make -f
+
+export DEB_BUILD_MAINT_OPTIONS = hardening=+all
+
+%:
+	dh $@ --buildsystem=meson
+
+# /usr/libexec like the system gnome-terminal-server; no help docs,
+# Nautilus extension or GNOME Shell search provider in this fork.
+override_dh_auto_configure:
+	dh_auto_configure -- \
+		--libexecdir=libexec \
+		-Ddocs=false \
+		-Dnautilus_extension=false \
+		-Dsearch_provider=false

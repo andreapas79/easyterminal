@@ -336,9 +336,12 @@ subdir('src')
 subdir('data')
 subdir('po')
 
+# EasyTerminal: the man page only needs xsltproc, so it is built even when
+# the (GNOME-branded, yelp) help is disabled with -Ddocs=false
+subdir('man')
+
 if get_option('docs')
   subdir('help')
-  subdir('man')
 endif
 
 # Dist

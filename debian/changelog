@@ -1,3 +1,13 @@
+easyterminal (3.44.0-1easy3) jammy; urgency=medium
+
+  * Carry over the Pop!_OS 22.04 gnome-terminal patches: background
+    transparency, padding around transparent terminals, scrollbar
+    background theming, style classes, Pop Shell resize behaviour,
+    clean env for new tabs, Launchpad and apt: URL handlers, OnlyShowIn.
+  * Italian strings for the transparency settings.
+
+ -- andreapas79 <61280317+andreapas79@users.noreply.github.com>  Thu, 22 Oct 2026 00:10:00 +0200
+
 easyterminal (3.44.0-1easy2) jammy; urgency=medium
 
   * New tabs open in the current tab's directory again: apply the

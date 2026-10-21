@@ -153,7 +153,7 @@ terminal_util_show_help (const char *topic)
 }
 
 #define ABOUT_GROUP "About"
-#define ABOUT_URL "https://wiki.gnome.org/Apps/Terminal"
+#define ABOUT_URL "https://github.com/andreapas79/easyterminal"
 #define EMAILIFY(string) (g_strdelimit ((string), "%", '@'))
 
 void
@@ -164,7 +164,8 @@ terminal_util_show_about (void)
     "Copyright © 2003–2004, 2007 Mariano Suárez-Alvarez\n"
     "Copyright © 2006 Guilherme de S. Pastore\n"
     "Copyright © 2007–2019 Christian Persch\n"
-    "Copyright © 2013–2019 Egmont Koblinger";
+    "Copyright © 2013–2019 Egmont Koblinger\n"
+    "Copyright © 2026 EasyTerminal contributors";
   char *licence_text;
   GKeyFile *key_file;
   GBytes *bytes;
@@ -227,7 +228,8 @@ terminal_util_show_about (void)
    * stable releases.
    */
   auto const gnome_version = 40 + (TERMINAL_MINOR_VERSION - 40 + 1) / 2;
-  version = g_strdup_printf (_("Version %s for GNOME %d"),
+  version = g_strdup_printf (_("Version %s, based on GNOME Terminal %s for GNOME %d"),
+                             VERSION,
                              VERSION,
                              gnome_version);
 
@@ -237,7 +239,7 @@ terminal_util_show_about (void)
                                  vte_get_micro_version ());
 
   comment = g_strdup_printf("%s\n%s %s",
-                            _("A terminal emulator for the GNOME desktop"),
+                            _("A fork of GNOME Terminal with renamable tabs and tab groups"),
                             vte_version,
                             vte_get_features ());
 

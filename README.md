@@ -40,6 +40,23 @@ sudo apt install debhelper meson ninja-build pkg-config gettext \
 ./build.sh deb    # build the .deb (written to the parent directory)
 ```
 
+## Changes from GNOME Terminal
+
+EasyTerminal is a modified version of GNOME Terminal 3.44.0, changed in 2026
+by andreapas79. It is not affiliated with or endorsed by the GNOME project;
+please report problems here, not to GNOME.
+
+Changes, all visible in the git history after the first commit (the unmodified
+upstream source):
+
+- renamed app ID, binaries, settings schemas, D-Bus service and icon;
+- tab renaming and tab groups (new `src/terminal-tab-group.*` and
+  `src/terminal-name-dialog.*`, hooks in the notebook, window, screen and tab
+  label code);
+- Ubuntu / Pop!_OS default profile carried over to the new schemas;
+- Italian translations for the new strings;
+- Debian packaging (`debian/`) and the `build.sh` / `run-dev.sh` scripts.
+
 ## License
 
 GPL-3.0-or-later, like GNOME Terminal. The original GNOME Terminal README is

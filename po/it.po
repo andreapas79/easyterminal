@@ -2142,8 +2142,8 @@ msgstr "Contributi da:"
 
 #: src/terminal-util.cc:230
 #, c-format
-msgid "Version %s for GNOME %d"
-msgstr "Versione %s per GNOME %d"
+msgid "Version %s, based on GNOME Terminal %s for GNOME %d"
+msgstr "Versione %s, basata su GNOME Terminal %s per GNOME %d"
 
 #: src/terminal-util.cc:234
 #, c-format
@@ -2151,8 +2151,8 @@ msgid "Using VTE version %u.%u.%u"
 msgstr "Versione VTE in uso %u.%u.%u"
 
 #: src/terminal-util.cc:240
-msgid "A terminal emulator for the GNOME desktop"
-msgstr "Un emulatore di terminale per l'ambiente GNOME"
+msgid "A fork of GNOME Terminal with renamable tabs and tab groups"
+msgstr "Un fork di GNOME Terminal con schede rinominabili e gruppi di schede"
 
 #: src/terminal-util.cc:257
 msgid "translator-credits"

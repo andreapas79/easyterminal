@@ -22,7 +22,7 @@ Build-Depends: debhelper-compat (= 13),
                desktop-file-utils
 Standards-Version: 4.6.0
 Rules-Requires-Root: no
-Homepage: https://gitlab.gnome.org/GNOME/gnome-terminal
+Homepage: https://github.com/andreapas79/easyterminal
 
 Package: easyterminal
 Architecture: any

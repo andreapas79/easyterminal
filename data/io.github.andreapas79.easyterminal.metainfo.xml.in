@@ -52,6 +52,7 @@
     <kudo>HighContrast</kudo>
     <kudo>ModernToolkit</kudo>
   </kudos>
-  <url type="homepage">https://wiki.gnome.org/Apps/Terminal</url>
-  <update_contact>https://wiki.gnome.org/Apps/Terminal/ReportingBugs</update_contact>
+  <url type="homepage">https://github.com/andreapas79/easyterminal</url>
+  <url type="bugtracker">https://github.com/andreapas79/easyterminal/issues</url>
+  <update_contact>https://github.com/andreapas79/easyterminal/issues</update_contact>
 </component>

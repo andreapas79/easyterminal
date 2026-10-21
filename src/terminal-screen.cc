@@ -1379,7 +1379,7 @@ update_color_scheme (TerminalScreen *screen)
 
   gtk_widget_style_get (GTK_WIDGET (screen),
                         "background-darkness", &style_darkness,
-                        NULL);
+                        nullptr);
 
   if (theme_transparent && style_darkness >= 0)
     {

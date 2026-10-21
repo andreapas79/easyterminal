@@ -162,16 +162,16 @@ handle_factory_error (const char *service_name,
 
   switch (exit_status) {
   case _EXIT_FAILURE_WRONG_ID:
-    terminal_printerr ("You tried to run gnome-terminal-server with elevated privileged. This is not supported.\n");
+    terminal_printerr ("You tried to run easyterminal-server with elevated privileged. This is not supported.\n");
     break;
   case _EXIT_FAILURE_NO_UTF8:
-    terminal_printerr ("The environment that gnome-terminal-server was launched with specified a non-UTF-8 locale. This is not supported.\n");
+    terminal_printerr ("The environment that easyterminal-server was launched with specified a non-UTF-8 locale. This is not supported.\n");
     break;
   case _EXIT_FAILURE_UNSUPPORTED_LOCALE:
-    terminal_printerr ("The environment that gnome-terminal-server was launched with specified an unsupported locale.\n");
+    terminal_printerr ("The environment that easyterminal-server was launched with specified an unsupported locale.\n");
     break;
   case _EXIT_FAILURE_GTK_INIT:
-    terminal_printerr ("The environment that gnome-terminal-server was launched with most likely contained an incorrect or unset \"DISPLAY\" variable.\n");
+    terminal_printerr ("The environment that easyterminal-server was launched with most likely contained an incorrect or unset \"DISPLAY\" variable.\n");
     break;
   default:
     break;
@@ -340,7 +340,7 @@ handle_show_preferences (TerminalOptions *options,
    * we cannot activate the action.
    */
   if (g_dbus_is_unique_name(service_name)) {
-    terminal_printerr ("Cannot call this function from within gnome-terminal.\n");
+    terminal_printerr ("Cannot call this function from within easyterminal.\n");
     return;
   }
 
@@ -552,7 +552,7 @@ main (int argc, char **argv)
 
   g_log_set_writer_func (terminal_log_writer, nullptr, nullptr);
 
-  g_set_prgname ("gnome-terminal");
+  g_set_prgname ("easyterminal");
 
   setlocale (LC_ALL, "");
 

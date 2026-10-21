@@ -1,5 +1,5 @@
 [Unit]
-Description=GNOME Terminal Server
+Description=EasyTerminal Server
 PartOf=graphical-session.target
 [Service]
 Slice=app-@gt_dns_name@.slice

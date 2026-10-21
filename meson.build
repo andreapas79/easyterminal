@@ -14,7 +14,7 @@
 # along with this programme.  If not, see <https://www.gnu.org/licenses/>.
 
 project(
-  'gnome-terminal',
+  'easyterminal',
   ['c', 'cpp',],
   default_options: [
     'buildtype=release',
@@ -32,8 +32,8 @@ project(
 
 # Naming
 
-gt_name     = 'gnome-terminal'
-gt_dns_name = 'org.gnome.Terminal'
+gt_name     = 'easyterminal'
+gt_dns_name = 'io.github.andreapas79.easyterminal'
 
 # Compiler requirements
 
@@ -371,7 +371,7 @@ configure_file(
 # Summary
 
 output = '\n'
-output += 'Configuration for gnome-terminal:\n\n'
+output += 'Configuration for easyterminal:\n\n'
 output += '  Version:            ' + gt_version + '\n'
 output += '\n'
 output += '  C compiler:         ' + cc.get_id() + ' (version ' + cc.version() + ')\n'

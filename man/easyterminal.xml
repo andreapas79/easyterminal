@@ -27,27 +27,27 @@
   of the GNU Free Documentation License along with this program.
   If not, see <https://www.gnu.org/licenses/>.
 -->
-<refentry id="gnome-terminal.1">
+<refentry id="easyterminal.1">
   <refentryinfo>
-    <title>gnome-terminal</title>
+    <title>easyterminal</title>
     <date>June 2020</date>
     <productname>GNOME</productname>
   </refentryinfo>
 
   <refmeta>
-    <refentrytitle>gnome-terminal</refentrytitle>
+    <refentrytitle>easyterminal</refentrytitle>
     <manvolnum>1</manvolnum>
     <refmiscinfo class="manual">User Commands</refmiscinfo>
   </refmeta>
 
   <refnamediv>
-    <refname>gnome-terminal</refname>
+    <refname>easyterminal</refname>
     <refpurpose>A terminal emulator for GNOME</refpurpose>
   </refnamediv>
 
   <refsynopsisdiv>
     <cmdsynopsis>
-      <command>gnome-terminal</command>
+      <command>easyterminal</command>
       <group rep="repeat"><replaceable>OPTION</replaceable></group>
       <group>-- <replaceable>PROGRAM</replaceable> <group rep="repeat"><replaceable>ARG</replaceable></group></group>
     </cmdsynopsis>
@@ -57,7 +57,7 @@
   <refsect1>
     <title>DESCRIPTION</title>
     <para>
-      <command>gnome-terminal</command> is a terminal emulator application for
+      <command>easyterminal</command> is a terminal emulator application for
       accessing a UNIX shell environment which can be used to run programs
       available on your system. It supports several profiles, multiple tabs and
       implements several keyboard shortcuts.
@@ -190,14 +190,14 @@
             This option is deprecated. Instead, use <option>--</option>
             to terminate the options, and put the program and arguments to
             execute after it: for example, instead of
-            <userinput>gnome-terminal -e "python3 -q"</userinput>, prefer to use
-            <userinput>gnome-terminal -- python3 -q</userinput>.
+            <userinput>easyterminal -e "python3 -q"</userinput>, prefer to use
+            <userinput>easyterminal -- python3 -q</userinput>.
           </para>
           <para>
             Note that the <replaceable>COMMAND</replaceable> is not run via
             a shell: it is split into words and executed as a program. If
             shell syntax is required, use the form
-            <userinput>gnome-terminal -- sh -c '...'</userinput>.
+            <userinput>easyterminal -- sh -c '...'</userinput>.
           </para>
         </listitem>
       </varlistentry>
@@ -212,8 +212,8 @@
           <para>
             This option is deprecated: use <option>--</option> instead.
             For example, instead of
-            <userinput>gnome-terminal -x python3 -q</userinput>, prefer to use
-            <userinput>gnome-terminal -- python3 -q</userinput>.
+            <userinput>easyterminal -x python3 -q</userinput>, prefer to use
+            <userinput>easyterminal -- python3 -q</userinput>.
           </para>
         </listitem>
       </varlistentry>
@@ -411,14 +411,14 @@
     <para>
       To run a terminal containing an interactive Python prompt:
       <literallayout>
-        gnome-terminal --title=Python -- python3 -q
+        easyterminal --title=Python -- python3 -q
       </literallayout>
     </para>
     <para>
       To interpret shell syntax in a terminal, either write it in a
       separate shell script, or use <literal>sh -c</literal>:
       <literallayout>
-        gnome-terminal -- sh -c 'if [ "$(id -u)" = 0 ]; then ...'
+        easyterminal -- sh -c 'if [ "$(id -u)" = 0 ]; then ...'
       </literallayout>
     </para>
   </refsect1>

@@ -40,7 +40,7 @@ _terminal_debug_init(void)
     { "search",        TERMINAL_DEBUG_SEARCH        },
   };
 
-  _terminal_debug_flags = TerminalDebugFlags(g_parse_debug_string (g_getenv ("GNOME_TERMINAL_DEBUG"),
+  _terminal_debug_flags = TerminalDebugFlags(g_parse_debug_string (g_getenv ("EASYTERMINAL_DEBUG"),
 								   keys, G_N_ELEMENTS (keys)));
 
 #endif /* ENABLE_DEBUG */

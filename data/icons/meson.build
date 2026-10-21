@@ -18,8 +18,8 @@ public_icons_themes = [
 ]
 
 public_icons_sources = [
-  'hicolor_apps_scalable_org.gnome.Terminal.svg',
-  'hicolor_apps_symbolic_org.gnome.Terminal-symbolic.svg',
+  'hicolor_apps_scalable_io.github.andreapas79.easyterminal.svg',
+  'hicolor_apps_symbolic_io.github.andreapas79.easyterminal-symbolic.svg',
 ]
 
 public_icons_renames = []

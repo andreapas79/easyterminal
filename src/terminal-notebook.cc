@@ -422,7 +422,7 @@ terminal_notebook_constructed (GObject *object)
 
   gtk_notebook_set_scrollable (notebook, TRUE);
   gtk_notebook_set_show_border (notebook, FALSE);
-  gtk_notebook_set_group_name (notebook, I_("gnome-terminal-window"));
+  gtk_notebook_set_group_name (notebook, I_("easyterminal-window"));
 
   /* Necessary for scroll events */
   gtk_widget_add_events (widget, GDK_SCROLL_MASK);

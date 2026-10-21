@@ -27,10 +27,10 @@ enum {
   _EXIT_FAILURE_GTK_INIT = 10
 };
 
-#define TERMINAL_APPLICATION_ID                 "org.gnome.Terminal"
+#define TERMINAL_APPLICATION_ID                 "io.github.andreapas79.easyterminal"
 
-#define TERMINAL_OBJECT_PATH_PREFIX             "/org/gnome/Terminal"
-#define TERMINAL_OBJECT_INTERFACE_PREFIX        "org.gnome.Terminal"
+#define TERMINAL_OBJECT_PATH_PREFIX             "/io/github/andreapas79/easyterminal"
+#define TERMINAL_OBJECT_INTERFACE_PREFIX        "io.github.andreapas79.easyterminal"
 
 #define TERMINAL_FACTORY_OBJECT_PATH            TERMINAL_OBJECT_PATH_PREFIX "/Factory0"
 #define TERMINAL_FACTORY_INTERFACE_NAME         TERMINAL_OBJECT_INTERFACE_PREFIX ".Factory0"
@@ -40,8 +40,8 @@ enum {
 
 #define TERMINAL_SEARCH_PROVIDER_PATH           TERMINAL_OBJECT_PATH_PREFIX "/SearchProvider"
 
-#define TERMINAL_ENV_SERVICE_NAME               "GNOME_TERMINAL_SERVICE"
-#define TERMINAL_ENV_SCREEN                     "GNOME_TERMINAL_SCREEN"
+#define TERMINAL_ENV_SERVICE_NAME               "EASYTERMINAL_SERVICE"
+#define TERMINAL_ENV_SCREEN                     "EASYTERMINAL_SCREEN"
 
 G_END_DECLS
 

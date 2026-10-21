@@ -150,7 +150,7 @@ terminal_headerbar_class_init (TerminalHeaderbarClass *klass)
 
   /* g_object_class_install_properties (gobject_class, G_N_ELEMENTS (pspecs), pspecs); */
 
-  gtk_widget_class_set_template_from_resource (widget_class, "/org/gnome/terminal/ui/headerbar.ui");
+  gtk_widget_class_set_template_from_resource (widget_class, "/io/github/andreapas79/easyterminal/ui/headerbar.ui");
   gtk_widget_class_bind_template_child_private (widget_class, TerminalHeaderbar, menubutton);
   gtk_widget_class_bind_template_child_private (widget_class, TerminalHeaderbar, profilebutton);
 }

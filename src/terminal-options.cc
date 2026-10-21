@@ -304,7 +304,7 @@ ensure_top_tab (TerminalOptions *options)
 static void
 deprecated_option_warning (const gchar *option_name)
 {
-  terminal_printerr (_("Option “%s” is deprecated and might be removed in a later version of gnome-terminal."),
+  terminal_printerr (_("Option “%s” is deprecated and might be removed in a later version of easyterminal."),
                      option_name);
   terminal_printerr ("\n");
 }
@@ -325,7 +325,7 @@ unsupported_option_callback (const gchar *option_name,
                              gpointer     data,
                              GError     **error)
 {
-  terminal_printerr (_("Option “%s” is no longer supported in this version of gnome-terminal."),
+  terminal_printerr (_("Option “%s” is no longer supported in this version of easyterminal."),
               option_name);
   terminal_printerr ("\n");
   return TRUE; /* we do not want to bail out here but continue */
@@ -338,7 +338,7 @@ unsupported_option_fatal_callback (const gchar *option_name,
                                    GError     **error)
 {
   g_set_error (error, G_OPTION_ERROR, G_OPTION_ERROR_UNKNOWN_OPTION,
-               _("Option “%s” is no longer supported in this version of gnome-terminal."),
+               _("Option “%s” is no longer supported in this version of easyterminal."),
                option_name);
   return FALSE;
 }
@@ -350,7 +350,7 @@ option_version_cb (const gchar *option_name,
                    gpointer     data,
                    GError     **error)
 {
-  terminal_print ("GNOME Terminal %s using VTE %u.%u.%u %s\n",
+  terminal_print ("EasyTerminal %s using VTE %u.%u.%u %s\n",
                   VERSION,
                   vte_get_major_version (),
                   vte_get_minor_version (),
@@ -1034,7 +1034,7 @@ terminal_options_parse (int *argcp,
 
   options->default_working_dir = g_get_current_dir ();
 
-  /* Collect info from gnome-terminal private env vars */
+  /* Collect info from easyterminal private env vars */
   const char *server_unique_name = g_getenv (TERMINAL_ENV_SERVICE_NAME);
   if (server_unique_name != nullptr) {
     if (g_dbus_is_unique_name (server_unique_name))
@@ -1650,9 +1650,9 @@ get_goption_context (TerminalOptions *options)
 
   g_option_context_add_group (context, gtk_get_option_group (TRUE));
 
-  group = g_option_group_new ("gnome-terminal",
-                              N_("GNOME Terminal Emulator"),
-                              N_("Show GNOME Terminal options"),
+  group = g_option_group_new ("easyterminal",
+                              N_("EasyTerminal Emulator"),
+                              N_("Show EasyTerminal options"),
                               options,
                               nullptr);
   g_option_group_set_translation_domain (group, GETTEXT_PACKAGE);

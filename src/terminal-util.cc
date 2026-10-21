@@ -244,7 +244,7 @@ terminal_util_show_about (void)
   dialog = (GtkWindow*)g_object_new (GTK_TYPE_ABOUT_DIALOG,
                          /* Hold the application while the window is shown */
                          "application", terminal_app_get (),
-                         "program-name", _("GNOME Terminal"),
+                         "program-name", _("EasyTerminal"),
                          "copyright", copyright,
                          "comments", comment,
                          "version", version,
@@ -398,16 +398,16 @@ char *
 terminal_util_get_licence_text (void)
 {
   const gchar *license[] = {
-    N_("GNOME Terminal is free software: you can redistribute it and/or modify "
+    N_("EasyTerminal is free software: you can redistribute it and/or modify "
        "it under the terms of the GNU General Public License as published by "
        "the Free Software Foundation, either version 3 of the License, or "
        "(at your option) any later version."),
-    N_("GNOME Terminal is distributed in the hope that it will be useful, "
+    N_("EasyTerminal is distributed in the hope that it will be useful, "
        "but WITHOUT ANY WARRANTY; without even the implied warranty of "
        "MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the "
        "GNU General Public License for more details."),
     N_("You should have received a copy of the GNU General Public License "
-       "along with GNOME Terminal.  If not, see <http://www.gnu.org/licenses/>.")
+       "along with EasyTerminal.  If not, see <http://www.gnu.org/licenses/>.")
   };
 
   return g_strjoin ("\n\n", _(license[0]), _(license[1]), _(license[2]), nullptr);
@@ -1068,7 +1068,7 @@ terminal_util_timestamp_info (const char *str)
     num /= 1000;
 
   /* Fun: use inclusive interval so you can right-click on these numbers
-   * and check the human-readable time in gnome-terminal.
+   * and check the human-readable time in easyterminal.
    * (They're Sep 9 2001 and May 18 2033 by the way.) */
   if (num < 1000000000 || num > 1999999999)
     return nullptr;
@@ -1085,7 +1085,7 @@ terminal_util_timestamp_info (const char *str)
  * @uri: The URI to verify and maybe fixup
  * @error: a #GError that is returned in case of errors
  *
- * Checks if gnome-terminal should attempt to handle the given URI,
+ * Checks if easyterminal should attempt to handle the given URI,
  * and rewrites if necessary.
  *
  * Currently URIs of "file://some-other-host/..." are refused because
@@ -1096,7 +1096,7 @@ terminal_util_timestamp_info (const char *str)
  * avoid potential confusion around short hostname vs. fqdn, and to
  * work around bug 781800 (LibreOffice bug 107461).
  *
- * Returns: The possibly rewritten URI if gnome-terminal should attempt
+ * Returns: The possibly rewritten URI if easyterminal should attempt
  *   to handle it, nullptr if it should refuse to handle.
  */
 char *
@@ -1196,7 +1196,7 @@ char *terminal_util_hyperlink_uri_label (const char *uri)
   return g_utf8_make_valid (unesc, -1);
 }
 
-#define TERMINAL_CACHE_DIR                 "gnome-terminal"
+#define TERMINAL_CACHE_DIR                 "easyterminal"
 #define TERMINAL_PRINT_SETTINGS_FILENAME   "print-settings.ini"
 #define TERMINAL_PRINT_SETTINGS_GROUP_NAME "Print Settings"
 #define TERMINAL_PAGE_SETUP_GROUP_NAME     "Page Setup"

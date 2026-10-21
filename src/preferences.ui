@@ -281,7 +281,7 @@
   <object class="GtkApplicationWindow" id="preferences-dialog">
     <property name="can_focus">False</property>
     <property name="show_menubar">False</property>
-    <property name="role">gnome-terminal-preferences</property>
+    <property name="role">easyterminal-preferences</property>
     <property name="resizable">False</property>
     <child>
       <object class="GtkBox" id="dialogue-content-box">

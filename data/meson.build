@@ -25,13 +25,15 @@ i18n.merge_file(
   install_dir: gt_prefix / metainfodir,
 )
 
-i18n.merge_file(
-  input: gt_dns_name + '.Nautilus.metainfo.xml.in',
-  output: '@BASENAME@',
-  po_dir: po_dir,
-  install: true,
-  install_dir: gt_prefix / metainfodir,
-)
+if get_option('nautilus_extension')
+  i18n.merge_file(
+    input: gt_dns_name + '.Nautilus.metainfo.xml.in',
+    output: '@BASENAME@',
+    po_dir: po_dir,
+    install: true,
+    install_dir: gt_prefix / metainfodir,
+  )
+endif
 
 # Desktop file
 

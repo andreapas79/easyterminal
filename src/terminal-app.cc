@@ -599,8 +599,8 @@ terminal_app_create_menubar (TerminalApp *app,
    * If the menubar is shown by the app, toggling mnemonics is handled in terminal-window.c using
    * gtk_window_set_mnemonic_modifier().
    * See bug 792978 for details. */
-  terminal_util_load_objects_resource (shell_shows_menubar ? "/org/gnome/terminal/ui/menubar-without-mnemonics.ui"
-                                                           : "/org/gnome/terminal/ui/menubar-with-mnemonics.ui",
+  terminal_util_load_objects_resource (shell_shows_menubar ? "/io/github/andreapas79/easyterminal/ui/menubar-without-mnemonics.ui"
+                                                           : "/io/github/andreapas79/easyterminal/ui/menubar-with-mnemonics.ui",
                                        "menubar", &app->menubar,
                                        "new-terminal-section", &app->menubar_new_terminal_section,
                                        "set-profile-section", &app->menubar_set_profile_section,
@@ -615,7 +615,7 @@ terminal_app_create_menubar (TerminalApp *app,
 static void
 terminal_app_create_headermenu (TerminalApp *app)
 {
-  terminal_util_load_objects_resource ("/org/gnome/terminal/ui/headerbar-menu.ui",
+  terminal_util_load_objects_resource ("/io/github/andreapas79/easyterminal/ui/headerbar-menu.ui",
                                        "headermenu", &app->headermenu,
                                        "set-profile-section", &app->headermenu_set_profile_section,
                                        nullptr);
@@ -770,7 +770,7 @@ terminal_app_startup (GApplication *application)
   G_APPLICATION_CLASS (terminal_app_parent_class)->startup (application);
 
   /* Need to set the WM class (bug #685742) */
-  gdk_set_program_class("Gnome-terminal");
+  gdk_set_program_class("Easyterminal");
 
   g_action_map_add_action_entries (G_ACTION_MAP (application),
                                    action_entries, G_N_ELEMENTS (action_entries),
@@ -1238,7 +1238,7 @@ terminal_app_get_schema_source(TerminalApp *app)
  * terminal_app_get_global_settings:
  * @app: a #TerminalApp
  *
- * Returns: (tranfer none): the cached #GSettings object for the org.gnome.Terminal.Preferences schema
+ * Returns: (tranfer none): the cached #GSettings object for the io.github.andreapas79.easyterminal.Preferences schema
  */
 GSettings *
 terminal_app_get_global_settings (TerminalApp *app)

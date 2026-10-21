@@ -54,6 +54,64 @@ enum
 
 /* helper functions */
 
+/* EasyTerminal: a tab group's header page holds no terminal */
+static gboolean
+is_screen_page (GtkWidget *page)
+{
+  return page != nullptr && !terminal_tab_groups_is_header (page);
+}
+
+static GList *
+list_screen_pages (GtkNotebook *notebook)
+{
+  GList *list = nullptr;
+  int n = gtk_notebook_get_n_pages (notebook);
+  for (int i = n - 1; i >= 0; i--) {
+    GtkWidget *page = gtk_notebook_get_nth_page (notebook, i);
+    if (is_screen_page (page))
+      list = g_list_prepend (list, page);
+  }
+  return list;
+}
+
+static int
+n_screen_pages (GtkNotebook *notebook)
+{
+  int count = 0;
+  int n = gtk_notebook_get_n_pages (notebook);
+  for (int i = 0; i < n; i++)
+    if (is_screen_page (gtk_notebook_get_nth_page (notebook, i)))
+      count++;
+  return count;
+}
+
+/* Page number of the @screen_num-th terminal, or -1 */
+static int
+page_num_of_screen_num (GtkNotebook *notebook,
+                        int screen_num)
+{
+  int n = gtk_notebook_get_n_pages (notebook);
+  for (int i = 0, k = 0; i < n; i++) {
+    if (!is_screen_page (gtk_notebook_get_nth_page (notebook, i)))
+      continue;
+    if (k++ == screen_num)
+      return i;
+  }
+  return -1;
+}
+
+/* Terminal number of page @page_num (headers before it don't count) */
+static int
+screen_num_of_page_num (GtkNotebook *notebook,
+                        int page_num)
+{
+  int k = 0;
+  for (int i = 0; i < page_num; i++)
+    if (is_screen_page (gtk_notebook_get_nth_page (notebook, i)))
+      k++;
+  return k;
+}
+
 static void
 update_tab_visibility (TerminalNotebook *notebook,
                        int change)
@@ -66,7 +124,7 @@ update_tab_visibility (TerminalNotebook *notebook,
   if (gtk_widget_in_destruction (GTK_WIDGET (notebook)))
     return;
 
-  new_n_pages = gtk_notebook_get_n_pages (gtk_notebook) + change;
+  new_n_pages = n_screen_pages (gtk_notebook) + change;
   /* Don't do anything if we're going to have zero pages (and thus close the window) */
   if (new_n_pages == 0)
     return;
@@ -108,24 +166,6 @@ close_button_clicked_cb (TerminalTabLabel *tab_label,
 }
 
 
-/* EasyTerminal: the collapse button before an expanded group's tabs */
-static void
-group_collapse_clicked_cb (TerminalTabLabel *tab_label,
-                           gpointer user_data)
-{
-  TerminalScreen *screen = terminal_tab_label_get_screen (tab_label);
-  /* Looked up like in close_button_clicked_cb: the tab may have moved */
-  TerminalNotebook *notebook = TERMINAL_NOTEBOOK (gtk_widget_get_ancestor (GTK_WIDGET (screen),
-                                                                           TERMINAL_TYPE_NOTEBOOK));
-  if (notebook == nullptr)
-    return;
-
-  TerminalTabGroups *groups = notebook->priv->tab_groups;
-  TerminalTabGroup *group = terminal_tab_groups_get_group_of (groups, screen);
-  if (group != nullptr)
-    terminal_tab_groups_collapse (groups, group);
-}
-
 static void
 remove_reorder_bindings (GtkBindingSet    *binding_set,
                          guint             keysym)
@@ -156,13 +196,14 @@ terminal_notebook_add_screen (TerminalMdiContainer *container,
   tab_label = terminal_tab_label_new (screen);
   g_signal_connect (tab_label, "close-button-clicked",
                     G_CALLBACK (close_button_clicked_cb), nullptr);
-  g_signal_connect (tab_label, "group-collapse-clicked",
-                    G_CALLBACK (group_collapse_clicked_cb), nullptr);
+
+  /* @position counts terminals; group header pages are not terminals */
+  int page_position = position < 0 ? -1 : page_num_of_screen_num (gtk_notebook, position);
 
   gtk_notebook_insert_page (gtk_notebook,
                             screen_container,
                             tab_label,
-                            position);
+                            page_position);
   gtk_container_child_set (GTK_CONTAINER (notebook),
                            screen_container,
                            "tab-expand", TRUE,
@@ -198,6 +239,8 @@ terminal_notebook_get_active_screen (TerminalMdiContainer *container)
   GtkWidget *widget;
 
   widget = gtk_notebook_get_nth_page (gtk_notebook, gtk_notebook_get_current_page (gtk_notebook));
+  if (!is_screen_page (widget))
+    return notebook->priv->active_screen;
   return terminal_screen_container_get_screen (TERMINAL_SCREEN_CONTAINER (widget));
 }
 
@@ -223,8 +266,8 @@ terminal_notebook_set_active_screen (TerminalMdiContainer *container,
 static GList *
 terminal_notebook_list_screen_containers (TerminalMdiContainer *container)
 {
-  /* We are trusting that GtkNotebook will return pages in order */
-  return gtk_container_get_children (GTK_CONTAINER (container));
+  /* Pages in order, without tab group header pages */
+  return list_screen_pages (GTK_NOTEBOOK (container));
 }
 
 static GList *
@@ -242,13 +285,14 @@ terminal_notebook_list_screens (TerminalMdiContainer *container)
 static int
 terminal_notebook_get_n_screens (TerminalMdiContainer *container)
 {
-  return gtk_notebook_get_n_pages (GTK_NOTEBOOK (container));
+  return n_screen_pages (GTK_NOTEBOOK (container));
 }
 
 static int
 terminal_notebook_get_active_screen_num (TerminalMdiContainer *container)
 {
-  return gtk_notebook_get_current_page (GTK_NOTEBOOK (container));
+  GtkNotebook *gtk_notebook = GTK_NOTEBOOK (container);
+  return screen_num_of_page_num (gtk_notebook, gtk_notebook_get_current_page (gtk_notebook));
 }
 
 static void
@@ -258,12 +302,16 @@ terminal_notebook_set_active_screen_num (TerminalMdiContainer *container,
   GtkNotebook *gtk_notebook = GTK_NOTEBOOK (container);
   TerminalNotebook *notebook = TERMINAL_NOTEBOOK (container);
 
-  GtkWidget *child = gtk_notebook_get_nth_page (gtk_notebook, position);
-  if (child != nullptr)
-    terminal_tab_groups_prepare_activate (notebook->priv->tab_groups,
-                                          terminal_screen_container_get_screen (TERMINAL_SCREEN_CONTAINER (child)));
+  /* @position counts terminals; group header pages are not terminals */
+  int page_num = page_num_of_screen_num (gtk_notebook, position);
+  GtkWidget *child = gtk_notebook_get_nth_page (gtk_notebook, page_num);
+  if (child == nullptr)
+    return;
 
-  gtk_notebook_set_current_page (gtk_notebook, position);
+  terminal_tab_groups_prepare_activate (notebook->priv->tab_groups,
+                                        terminal_screen_container_get_screen (TERMINAL_SCREEN_CONTAINER (child)));
+
+  gtk_notebook_set_current_page (gtk_notebook, page_num);
 }
 
 static void
@@ -306,6 +354,28 @@ terminal_notebook_switch_page (GtkNotebook     *gtk_notebook,
   TerminalNotebook *notebook = TERMINAL_NOTEBOOK (gtk_notebook);
   TerminalNotebookPrivate *priv = notebook->priv;
   TerminalScreen *screen, *old_active_screen;
+
+  /* EasyTerminal: a group header page never becomes current; select the
+   * nearest visible terminal instead (GTK picks it e.g. when the current
+   * tab is closed) */
+  if (!is_screen_page (child)) {
+    int n = gtk_notebook_get_n_pages (gtk_notebook);
+    for (int d = 1; d < n; d++) {
+      for (int sign = 1; sign >= -1; sign -= 2) {
+        int candidate = (int) page_num + sign * d;
+        if (candidate < 0 || candidate >= n)
+          continue;
+        GtkWidget *page = gtk_notebook_get_nth_page (gtk_notebook, candidate);
+        if (is_screen_page (page) && gtk_widget_get_visible (page)) {
+          gtk_notebook_set_current_page (gtk_notebook, candidate);
+          return;
+        }
+      }
+    }
+    /* No terminal left (the window is closing) */
+    GTK_NOTEBOOK_CLASS (terminal_notebook_parent_class)->switch_page (gtk_notebook, child, page_num);
+    return;
+  }
 
   GTK_NOTEBOOK_CLASS (terminal_notebook_parent_class)->switch_page (gtk_notebook, child, page_num);
 
@@ -351,6 +421,9 @@ terminal_notebook_page_added (GtkNotebook     *gtk_notebook,
   if (page_added)
     page_added (gtk_notebook, child, page_num);
 
+  if (!is_screen_page (child))
+    return;
+
   terminal_tab_groups_page_added (notebook->priv->tab_groups,
                                   terminal_screen_container_get_screen (TERMINAL_SCREEN_CONTAINER (child)));
 
@@ -371,6 +444,9 @@ terminal_notebook_page_removed (GtkNotebook     *gtk_notebook,
   if (page_removed)
     page_removed (gtk_notebook, child, page_num);
 
+  if (!is_screen_page (child))
+    return;
+
   terminal_tab_groups_page_removed (notebook->priv->tab_groups,
                                     terminal_screen_container_get_screen (TERMINAL_SCREEN_CONTAINER (child)));
 
@@ -390,8 +466,7 @@ terminal_notebook_page_reordered (GtkNotebook     *notebook,
   if (page_reordered)
     page_reordered (notebook, child, page_num);
 
-  terminal_tab_groups_page_reordered (TERMINAL_NOTEBOOK (notebook)->priv->tab_groups,
-                                      terminal_screen_container_get_screen (TERMINAL_SCREEN_CONTAINER (child)));
+  terminal_tab_groups_page_reordered (TERMINAL_NOTEBOOK (notebook)->priv->tab_groups, child);
 
   g_signal_emit_by_name (notebook, "screens-reordered");
 }
@@ -440,7 +515,8 @@ terminal_notebook_finalize (GObject *object)
   G_OBJECT_CLASS (terminal_notebook_parent_class)->finalize (object);
 }
 
-/* EasyTerminal: clicking (or middle-clicking) a group chip expands the group */
+/* EasyTerminal: clicking (or middle-clicking) a group's pill collapses or
+ * expands the group */
 static gboolean
 terminal_notebook_button_press (GtkWidget *widget,
                                 GdkEventButton *event)
@@ -451,9 +527,12 @@ terminal_notebook_button_press (GtkWidget *widget,
       (event->button == GDK_BUTTON_PRIMARY || event->button == GDK_BUTTON_MIDDLE) &&
       (event->state & gtk_accelerator_get_default_mod_mask ()) == 0) {
     int page_num = terminal_notebook_find_tab_num_at_pos (notebook, event->x_root, event->y_root);
-    TerminalTabGroup *group = terminal_tab_groups_get_chip_at (notebook->priv->tab_groups, page_num);
+    TerminalTabGroup *group = terminal_tab_groups_get_header_at (notebook->priv->tab_groups, page_num);
     if (group != nullptr) {
-      terminal_tab_groups_expand (notebook->priv->tab_groups, group);
+      if (terminal_tab_group_get_collapsed (group))
+        terminal_tab_groups_expand (notebook->priv->tab_groups, group);
+      else
+        terminal_tab_groups_collapse (notebook->priv->tab_groups, group);
       return TRUE;
     }
   }

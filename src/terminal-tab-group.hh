@@ -18,15 +18,17 @@
 /* EasyTerminal: named, collapsible tab groups (per window).
  *
  * The groups of a window are owned by a TerminalTabGroups manager that lives
- * in the window's TerminalNotebook. Members of a group are always contiguous
- * in the notebook.
+ * in the window's TerminalNotebook. A group is a "header" page followed by
+ * its member pages, always contiguous:
  *
- * GTK3's GtkNotebook ties a tab's visibility to its page's visibility
- * (gtknotebook.c, gtk_notebook_size_request), so a tab cannot be hidden on
- * its own. A collapsed group therefore keeps exactly one member page visible,
- * the "representative", whose tab label turns into the group chip; the other
- * member pages are hidden. The representative is the active tab when it
- * belongs to the group, so collapsing never hides the active terminal.
+ *   [header: pill "name"] [member] [member] ...
+ *
+ * The header page holds no terminal and never becomes the current page; its
+ * tab is the group's pill (click: collapse/expand, right-click: group menu).
+ * GtkNotebook (GTK3) ties a tab's visibility to its page's, so collapsing
+ * hides the member pages and only the pill stays. The one exception is the
+ * active terminal: collapsing never hides it, it stays next to the pill
+ * until another tab is selected.
  */
 
 #pragma once
@@ -44,16 +46,17 @@ TerminalTabGroups *terminal_tab_groups_new  (GtkNotebook *notebook);
 void               terminal_tab_groups_free (TerminalTabGroups *groups);
 
 /* Queries */
+gboolean          terminal_tab_groups_is_header    (GtkWidget *page);
 TerminalTabGroup *terminal_tab_groups_get_group_of (TerminalTabGroups *groups,
                                                     TerminalScreen *screen);
 TerminalTabGroup *terminal_tab_groups_find         (TerminalTabGroups *groups,
                                                     guint id);
 /* Returns: (transfer container): the groups in tab bar order */
 GList            *terminal_tab_groups_list         (TerminalTabGroups *groups);
-/* The collapsed group whose chip is the tab of page @page_num, or nullptr */
-TerminalTabGroup *terminal_tab_groups_get_chip_at  (TerminalTabGroups *groups,
-                                                    int page_num);
-/* FALSE for every tab of a collapsed group: keyboard tab switching skips them */
+/* The group whose header (pill) is page @page_num, or nullptr */
+TerminalTabGroup *terminal_tab_groups_get_header_at (TerminalTabGroups *groups,
+                                                     int page_num);
+/* FALSE for the tabs of a collapsed group: keyboard tab switching skips them */
 gboolean          terminal_tab_groups_is_navigable (TerminalTabGroups *groups,
                                                     TerminalScreen *screen);
 
@@ -80,8 +83,7 @@ void terminal_tab_groups_rename   (TerminalTabGroups *groups,
 void terminal_tab_groups_ungroup  (TerminalTabGroups *groups,
                                    TerminalTabGroup *group);
 
-/* Makes the page of @screen visible so it can become the current page; for a
- * member of a collapsed group it becomes the group's representative. */
+/* Makes the page of @screen visible so it can become the current page */
 void terminal_tab_groups_prepare_activate (TerminalTabGroups *groups,
                                            TerminalScreen *screen);
 
@@ -91,13 +93,13 @@ void terminal_tab_groups_reorder (TerminalTabGroups *groups,
                                   TerminalScreen *screen,
                                   int direction);
 
-/* Notebook hooks */
+/* Notebook hooks (screen pages only; header pages are filtered out) */
 void terminal_tab_groups_page_added     (TerminalTabGroups *groups,
                                          TerminalScreen *screen);
 void terminal_tab_groups_page_removed   (TerminalTabGroups *groups,
                                          TerminalScreen *screen);
 void terminal_tab_groups_page_reordered (TerminalTabGroups *groups,
-                                         TerminalScreen *screen);
+                                         GtkWidget *page);
 void terminal_tab_groups_page_switched  (TerminalTabGroups *groups,
                                          TerminalScreen *screen);
 

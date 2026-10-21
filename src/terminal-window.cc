@@ -1100,6 +1100,19 @@ action_tab_group_collapse_cb (GSimpleAction *action,
 }
 
 static void
+action_tab_group_collapse_id_cb (GSimpleAction *action,
+                                     GVariant *parameter,
+                                     gpointer user_data)
+{
+  TerminalWindow *window = (TerminalWindow*)user_data;
+  TerminalTabGroups *groups = window_tab_groups (window);
+
+  TerminalTabGroup *group = terminal_tab_groups_find (groups, g_variant_get_uint32 (parameter));
+  if (group != nullptr)
+    terminal_tab_groups_collapse (groups, group);
+}
+
+static void
 action_tab_group_expand_cb (GSimpleAction *action,
                             GVariant *parameter,
                             gpointer user_data)
@@ -2354,6 +2367,7 @@ terminal_window_init (TerminalWindow *window)
     { "tab-group-remove",    action_tab_group_remove_cb, nullptr,   nullptr, nullptr },
     { "tab-group-collapse",  action_tab_group_collapse_cb, nullptr, nullptr, nullptr },
     { "tab-group-expand",    action_tab_group_expand_cb, "u",    nullptr, nullptr },
+    { "tab-group-collapse-id", action_tab_group_collapse_id_cb, "u", nullptr, nullptr },
     { "tab-group-rename",    action_tab_group_rename_cb, "u",    nullptr, nullptr },
     { "tab-group-ungroup",   action_tab_group_ungroup_cb, "u",   nullptr, nullptr },
     { "tab-move-left",       action_tab_move_left_cb,    nullptr,   nullptr, nullptr },
@@ -2996,7 +3010,7 @@ notebook_show_context_menu (TerminalWindow *window,
     gtk_menu_shell_select_first (GTK_MENU_SHELL (popup_menu), FALSE);
 }
 
-/* EasyTerminal: context menu of a collapsed group's chip */
+/* EasyTerminal: context menu of a group's pill */
 static void
 notebook_show_chip_menu (TerminalWindow *window,
                          TerminalTabGroup *group,
@@ -3005,9 +3019,10 @@ notebook_show_chip_menu (TerminalWindow *window,
 {
   guint id = terminal_tab_group_get_id (group);
   gs_unref_object GMenu *menu = g_menu_new ();
-  gs_unref_object GMenuItem *expand = g_menu_item_new (_("_Expand Group"), nullptr);
-  g_menu_item_set_action_and_target (expand, "win.tab-group-expand", "u", id);
-  g_menu_append_item (menu, expand);
+  gboolean collapsed = terminal_tab_group_get_collapsed (group);
+  gs_unref_object GMenuItem *toggle = g_menu_item_new (collapsed ? _("_Expand Group") : _("_Collapse Group"), nullptr);
+  g_menu_item_set_action_and_target (toggle, collapsed ? "win.tab-group-expand" : "win.tab-group-collapse-id", "u", id);
+  g_menu_append_item (menu, toggle);
   gs_unref_object GMenuItem *rename = g_menu_item_new (_("Re_name Group…"), nullptr);
   g_menu_item_set_action_and_target (rename, "win.tab-group-rename", "u", id);
   g_menu_append_item (menu, rename);
@@ -3039,10 +3054,10 @@ notebook_button_press_cb (GtkWidget *widget,
   if (tab_clicked < 0)
     return FALSE;
 
-  /* EasyTerminal: right-click on a group chip shows the group's menu and
+  /* EasyTerminal: right-click on a group's pill shows the group's menu and
    * does not change the active tab */
   TerminalTabGroup *chip_group =
-    terminal_tab_groups_get_chip_at (window_tab_groups (window), tab_clicked);
+    terminal_tab_groups_get_header_at (window_tab_groups (window), tab_clicked);
   if (chip_group != nullptr) {
     notebook_show_chip_menu (window, chip_group, event->button, event->time);
     return TRUE;

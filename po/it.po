@@ -2251,7 +2251,10 @@ msgstr "Chiudi _finestra"
 msgid "Failed to parse arguments: %s\n"
 msgstr "Analisi degli argomenti non riuscita: %s\n"
 
-#: src/terminal-tab-label.cc
-#, c-format
-msgid "Collapse group “%s”"
-msgstr "Comprimi il gruppo «%s»"
+#: src/terminal-tab-group.cc
+msgid "Click to expand the group"
+msgstr "Clic per espandere il gruppo"
+
+#: src/terminal-tab-group.cc
+msgid "Click to collapse the group"
+msgstr "Clic per comprimere il gruppo"

@@ -63,14 +63,9 @@ TerminalScreen *terminal_tab_label_get_screen (TerminalTabLabel *tab_label);
 
 /* EasyTerminal tab groups */
 void            terminal_tab_label_set_group_style (TerminalTabLabel *tab_label,
-                                                    int color,
-                                                    gboolean first,
-                                                    gboolean last,
-                                                    const char *group_name);
-void            terminal_tab_label_set_chip        (TerminalTabLabel *tab_label,
-                                                    const char *name,
-                                                    int color,
-                                                    gboolean active);
+                                                    int color);
+void            terminal_tab_label_set_current     (TerminalTabLabel *tab_label,
+                                                    gboolean current);
 
 G_END_DECLS
 

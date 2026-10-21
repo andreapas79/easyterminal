@@ -22,6 +22,7 @@ src/terminal-options.cc
 src/terminal-prefs.cc
 src/terminal-screen.cc
 src/terminal-search-popover.cc
+src/terminal-tab-group.cc
 src/terminal-tab-label.cc
 src/terminal-util.cc
 src/terminal-window.cc

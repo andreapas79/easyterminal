@@ -37,6 +37,7 @@
 #include "terminal-mdi-container.hh"
 #include "terminal-menu-button.hh"
 #include "terminal-notebook.hh"
+#include "terminal-name-dialog.hh"
 #include "terminal-schemas.hh"
 #include "terminal-screen-container.hh"
 #include "terminal-search-popover.hh"
@@ -947,6 +948,40 @@ action_tab_detach_cb (GSimpleAction *action,
   terminal_window_parse_geometry (new_window, geometry);
 
   gtk_window_present_with_time (GTK_WINDOW (new_window), gtk_get_current_event_time ());
+}
+
+/* EasyTerminal: "Rename Tab…" */
+
+static void
+set_title_dialog_done_cb (const char *text,
+                          gpointer user_data)
+{
+  TerminalScreen *screen = TERMINAL_SCREEN (user_data);
+
+  if (text == nullptr) /* cancelled */
+    return;
+
+  terminal_screen_set_user_title (screen, text);
+}
+
+static void
+action_set_title_cb (GSimpleAction *action,
+                     GVariant *parameter,
+                     gpointer user_data)
+{
+  TerminalWindow *window = (TerminalWindow*)user_data;
+  TerminalWindowPrivate *priv = window->priv;
+
+  if (priv->active_screen == nullptr)
+    return;
+
+  terminal_name_dialog_show (GTK_WINDOW (window),
+                             _("Rename Tab"),
+                             _("_Tab name (leave empty to use the program’s title):"),
+                             terminal_screen_get_title (priv->active_screen),
+                             set_title_dialog_done_cb,
+                             g_object_ref (priv->active_screen),
+                             g_object_unref);
 }
 
 static void
@@ -2099,6 +2134,7 @@ terminal_window_init (TerminalWindow *window)
     { "paste-uris",          action_paste_uris_cb,       nullptr,   nullptr, nullptr },
     { "reset",               action_reset_cb,            "b",    nullptr, nullptr },
     { "select-all",          action_select_all_cb,       nullptr,   nullptr, nullptr },
+    { "set-title",           action_set_title_cb,        nullptr,   nullptr, nullptr },
     { "size-to",             action_size_to_cb,          "(uu)", nullptr, nullptr },
     { "tab-detach",          action_tab_detach_cb,       nullptr,   nullptr, nullptr },
     { "tab-move-left",       action_tab_move_left_cb,    nullptr,   nullptr, nullptr },

@@ -17,6 +17,18 @@
 -->
 <interface>
   <menu id="notebook-popup">
+    <!-- EasyTerminal: New Tab and Rename Tab added; existing items kept -->
+    <section>
+      <item>
+        <attribute name="label" translatable="yes">New _Tab</attribute>
+        <attribute name="action">win.new-terminal</attribute>
+        <attribute name="target" type="(ss)">('tab', 'current')</attribute>
+      </item>
+      <item>
+        <attribute name="label" translatable="yes">Re_name Tab…</attribute>
+        <attribute name="action">win.set-title</attribute>
+      </item>
+    </section>
     <section>
       <item>
         <attribute name="label" translatable="yes">Move Terminal _Left</attribute>
@@ -31,11 +43,6 @@
       <item>
         <attribute name="label" translatable="yes">_Detach Terminal</attribute>
         <attribute name="action">win.tab-detach</attribute>
-      </item>
-      <item>
-        <attribute name="label" translatable="yes">Set _Title…</attribute>
-        <attribute name="action">win.set-title</attribute>
-        <attribute name="hidden-when">action-missing</attribute>
       </item>
     </section>
     <section>

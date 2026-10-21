@@ -139,6 +139,8 @@ server_sources = client_util_sources + debug_sources + dbus_sources + i18n_sourc
   'terminal-mdi-container.hh',
   'terminal-menu-button.cc',
   'terminal-menu-button.hh',
+  'terminal-name-dialog.cc',
+  'terminal-name-dialog.hh',
   'terminal-notebook.cc',
   'terminal-notebook.hh',
   'terminal-pcre2.hh',

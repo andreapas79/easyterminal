@@ -144,11 +144,6 @@
       <WITHOUT_MNEMONIC><attribute name="label" translatable="yes">Terminal</attribute></WITHOUT_MNEMONIC>
       <section>
         <section id="set-profile-section" />
-        <item>
-          <attribute name="label" translatable="yes">Set _Title…</attribute>
-          <attribute name="action">win.set-title</attribute>
-          <attribute name="hidden-when">action-missing</attribute>
-        </item>
       </section>
       <section>
         <item>

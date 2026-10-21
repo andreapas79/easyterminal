@@ -108,6 +108,11 @@ struct _TerminalScreenPrivate
   gboolean exec_on_realize;
   guint idle_exec_source;
   ExecData *exec_data;
+
+  /* EasyTerminal: title set by the user ("Rename Tab…"). When non-null it
+   * wins over the title set by the running program; only
+   * terminal_screen_set_user_title() changes it (Reset does not). */
+  char *user_title;
 };
 
 enum
@@ -738,6 +743,7 @@ terminal_screen_finalize (GObject *object)
   g_slist_free_full (priv->match_tags, (GDestroyNotify) free_tag_data);
 
   g_free (priv->uuid);
+  g_free (priv->user_title);
 
   G_OBJECT_CLASS (terminal_screen_parent_class)->finalize (object);
 }
@@ -993,7 +999,41 @@ terminal_screen_exec (TerminalScreen *screen,
 const char*
 terminal_screen_get_title (TerminalScreen *screen)
 {
+  if (screen->priv->user_title != nullptr)
+    return screen->priv->user_title;
+
   return vte_terminal_get_window_title (VTE_TERMINAL (screen));
+}
+
+const char*
+terminal_screen_get_user_title (TerminalScreen *screen)
+{
+  g_return_val_if_fail (TERMINAL_IS_SCREEN (screen), nullptr);
+
+  return screen->priv->user_title;
+}
+
+void
+terminal_screen_set_user_title (TerminalScreen *screen,
+                                const char *title)
+{
+  g_return_if_fail (TERMINAL_IS_SCREEN (screen));
+
+  TerminalScreenPrivate *priv = screen->priv;
+
+  /* An empty (or all-blank) title clears the user title, so the dynamic
+   * title set by the running program shows again. */
+  gs_free char *stripped = title ? g_strstrip (g_strdup (title)) : nullptr;
+  if (stripped != nullptr && stripped[0] == '\0')
+    g_clear_pointer (&stripped, g_free);
+
+  if (g_strcmp0 (priv->user_title, stripped) == 0)
+    return;
+
+  g_free (priv->user_title);
+  priv->user_title = (char*)g_steal_pointer (&stripped);
+
+  g_object_notify (G_OBJECT (screen), "title");
 }
 
 static void

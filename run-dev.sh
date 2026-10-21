@@ -5,7 +5,14 @@
 set -e
 here=$(cd "$(dirname "$0")" && pwd)
 build="$here/build"
-export GSETTINGS_SCHEMA_DIR="$build/src"
+# Schemas plus the distribution defaults (10_easyterminal.gschema.override),
+# compiled like an installed schema directory
+schemas="$build/dev-schemas"
+mkdir -p "$schemas"
+cp "$here/src/io.github.andreapas79.easyterminal.gschema.xml" "$schemas/"
+cp "$here/src/io.github.andreapas79.easyterminal.gschema.override" "$schemas/10_easyterminal.gschema.override"
+glib-compile-schemas --strict "$schemas"
+export GSETTINGS_SCHEMA_DIR="$schemas"
 export GSETTINGS_BACKEND=memory
 # Don't inherit the system gnome-terminal / a previous session's env
 unset EASYTERMINAL_SCREEN EASYTERMINAL_SERVICE

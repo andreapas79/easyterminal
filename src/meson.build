@@ -328,6 +328,13 @@ install_data(
   install_dir: gt_prefix / gt_schemadir,
 )
 
+# EasyTerminal: distribution defaults (Ubuntu, Pop!_OS) for our schema ids
+install_data(
+  gt_dns_name + '.gschema.override',
+  rename: '10_easyterminal.gschema.override',
+  install_dir: gt_prefix / gt_schemadir,
+)
+
 meson.add_install_script(
   'meson_compileschemas.py',
   gt_prefix / gt_schemadir,

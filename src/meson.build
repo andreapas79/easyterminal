@@ -152,6 +152,8 @@ server_sources = client_util_sources + debug_sources + dbus_sources + i18n_sourc
   'terminal-screen.hh',
   'terminal-search-popover.cc',
   'terminal-search-popover.hh',
+  'terminal-tab-group.cc',
+  'terminal-tab-group.hh',
   'terminal-tab-label.cc',
   'terminal-tab-label.hh',
   'terminal-util.cc',

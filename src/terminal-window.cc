@@ -790,21 +790,35 @@ tab_switch_relative (TerminalWindow *window,
   int n_screens, value;
 
   n_screens = terminal_mdi_container_get_n_screens (priv->mdi_container);
-  value = terminal_mdi_container_get_active_screen_num (priv->mdi_container) + change;
+  int start = terminal_mdi_container_get_active_screen_num (priv->mdi_container);
 
   gboolean keynav_wrap_around;
   g_object_get (gtk_widget_get_settings (GTK_WIDGET (window)),
                 "gtk-keynav-wrap-around", &keynav_wrap_around,
                 nullptr);
-  if (keynav_wrap_around) {
-    if (value < 0)
-      value += n_screens;
-    else if (value >= n_screens)
-      value -= n_screens;
-  }
 
-  if (value < 0 || value >= n_screens)
-    return;
+  /* EasyTerminal: skip the tabs of collapsed groups */
+  TerminalTabGroups *groups = terminal_notebook_get_tab_groups (TERMINAL_NOTEBOOK (priv->mdi_container));
+  gs_free_list GList *screens = terminal_mdi_container_list_screens (priv->mdi_container);
+  value = start;
+  for (int steps = 0; ; steps++) {
+    if (steps >= n_screens)
+      return; /* no other navigable tab */
+
+    value += change;
+    if (keynav_wrap_around) {
+      if (value < 0)
+        value += n_screens;
+      else if (value >= n_screens)
+        value -= n_screens;
+    }
+
+    if (value < 0 || value >= n_screens || value == start)
+      return;
+
+    if (terminal_tab_groups_is_navigable (groups, (TerminalScreen*) g_list_nth_data (screens, value)))
+      break;
+  }
 
   g_action_change_state (G_ACTION (lookup_action (window, "active-tab")),
                          g_variant_new_int32 (value));
@@ -948,6 +962,204 @@ action_tab_detach_cb (GSimpleAction *action,
   terminal_window_parse_geometry (new_window, geometry);
 
   gtk_window_present_with_time (GTK_WINDOW (new_window), gtk_get_current_event_time ());
+}
+
+/* EasyTerminal: tab groups */
+
+static TerminalTabGroups *
+window_tab_groups (TerminalWindow *window)
+{
+  return terminal_notebook_get_tab_groups (TERMINAL_NOTEBOOK (window->priv->mdi_container));
+}
+
+typedef struct {
+  TerminalWindow *window; /* weak */
+  TerminalScreen *screen; /* ref */
+  guint group_id;
+} GroupDialogData;
+
+static GroupDialogData *
+group_dialog_data_new (TerminalWindow *window,
+                       TerminalScreen *screen,
+                       guint group_id)
+{
+  GroupDialogData *data = g_new0 (GroupDialogData, 1);
+  data->window = window;
+  g_object_add_weak_pointer (G_OBJECT (window), (gpointer*)&data->window);
+  data->screen = screen ? (TerminalScreen*) g_object_ref (screen) : nullptr;
+  data->group_id = group_id;
+  return data;
+}
+
+static void
+group_dialog_data_free (gpointer user_data)
+{
+  GroupDialogData *data = (GroupDialogData*) user_data;
+  if (data->window)
+    g_object_remove_weak_pointer (G_OBJECT (data->window), (gpointer*)&data->window);
+  g_clear_object (&data->screen);
+  g_free (data);
+}
+
+/* Returns a stripped copy of @text, or nullptr if it is empty */
+static char *
+group_name_from_text (const char *text)
+{
+  if (text == nullptr)
+    return nullptr;
+  char *name = g_strstrip (g_strdup (text));
+  if (name[0] == '\0')
+    g_clear_pointer (&name, g_free);
+  return name;
+}
+
+static void
+tab_group_new_done_cb (const char *text,
+                       gpointer user_data)
+{
+  GroupDialogData *data = (GroupDialogData*) user_data;
+  gs_free char *name = group_name_from_text (text);
+
+  if (name == nullptr || data->window == nullptr)
+    return;
+
+  /* The tab may have been closed or moved while the dialog was open */
+  TerminalTabGroups *groups = window_tab_groups (data->window);
+  if (terminal_window_get_active (data->window) == nullptr ||
+      gtk_widget_get_ancestor (GTK_WIDGET (data->screen), TERMINAL_TYPE_WINDOW) != GTK_WIDGET (data->window))
+    return;
+
+  terminal_tab_groups_create (groups, data->screen, name);
+}
+
+static void
+action_tab_group_new_cb (GSimpleAction *action,
+                         GVariant *parameter,
+                         gpointer user_data)
+{
+  TerminalWindow *window = (TerminalWindow*)user_data;
+  TerminalWindowPrivate *priv = window->priv;
+
+  if (priv->active_screen == nullptr)
+    return;
+
+  terminal_name_dialog_show (GTK_WINDOW (window),
+                             _("New Tab Group"),
+                             _("_Group name:"),
+                             "",
+                             tab_group_new_done_cb,
+                             group_dialog_data_new (window, priv->active_screen, 0),
+                             group_dialog_data_free);
+}
+
+static void
+action_tab_group_move_cb (GSimpleAction *action,
+                          GVariant *parameter,
+                          gpointer user_data)
+{
+  TerminalWindow *window = (TerminalWindow*)user_data;
+  TerminalWindowPrivate *priv = window->priv;
+  TerminalTabGroups *groups = window_tab_groups (window);
+
+  TerminalTabGroup *group = terminal_tab_groups_find (groups, g_variant_get_uint32 (parameter));
+  if (group == nullptr || priv->active_screen == nullptr)
+    return;
+
+  terminal_tab_groups_join (groups, priv->active_screen, group);
+}
+
+static void
+action_tab_group_remove_cb (GSimpleAction *action,
+                            GVariant *parameter,
+                            gpointer user_data)
+{
+  TerminalWindow *window = (TerminalWindow*)user_data;
+  TerminalWindowPrivate *priv = window->priv;
+
+  if (priv->active_screen == nullptr)
+    return;
+
+  terminal_tab_groups_leave (window_tab_groups (window), priv->active_screen);
+}
+
+static void
+action_tab_group_collapse_cb (GSimpleAction *action,
+                              GVariant *parameter,
+                              gpointer user_data)
+{
+  TerminalWindow *window = (TerminalWindow*)user_data;
+  TerminalWindowPrivate *priv = window->priv;
+  TerminalTabGroups *groups = window_tab_groups (window);
+
+  if (priv->active_screen == nullptr)
+    return;
+
+  TerminalTabGroup *group = terminal_tab_groups_get_group_of (groups, priv->active_screen);
+  if (group != nullptr)
+    terminal_tab_groups_collapse (groups, group);
+}
+
+static void
+action_tab_group_expand_cb (GSimpleAction *action,
+                            GVariant *parameter,
+                            gpointer user_data)
+{
+  TerminalWindow *window = (TerminalWindow*)user_data;
+  TerminalTabGroups *groups = window_tab_groups (window);
+
+  TerminalTabGroup *group = terminal_tab_groups_find (groups, g_variant_get_uint32 (parameter));
+  if (group != nullptr)
+    terminal_tab_groups_expand (groups, group);
+}
+
+static void
+tab_group_rename_done_cb (const char *text,
+                          gpointer user_data)
+{
+  GroupDialogData *data = (GroupDialogData*) user_data;
+  gs_free char *name = group_name_from_text (text);
+
+  if (name == nullptr || data->window == nullptr)
+    return;
+
+  TerminalTabGroups *groups = window_tab_groups (data->window);
+  TerminalTabGroup *group = terminal_tab_groups_find (groups, data->group_id);
+  if (group != nullptr)
+    terminal_tab_groups_rename (groups, group, name);
+}
+
+static void
+action_tab_group_rename_cb (GSimpleAction *action,
+                            GVariant *parameter,
+                            gpointer user_data)
+{
+  TerminalWindow *window = (TerminalWindow*)user_data;
+  TerminalTabGroups *groups = window_tab_groups (window);
+
+  TerminalTabGroup *group = terminal_tab_groups_find (groups, g_variant_get_uint32 (parameter));
+  if (group == nullptr)
+    return;
+
+  terminal_name_dialog_show (GTK_WINDOW (window),
+                             _("Rename Tab Group"),
+                             _("_Group name:"),
+                             terminal_tab_group_get_name (group),
+                             tab_group_rename_done_cb,
+                             group_dialog_data_new (window, nullptr, terminal_tab_group_get_id (group)),
+                             group_dialog_data_free);
+}
+
+static void
+action_tab_group_ungroup_cb (GSimpleAction *action,
+                             GVariant *parameter,
+                             gpointer user_data)
+{
+  TerminalWindow *window = (TerminalWindow*)user_data;
+  TerminalTabGroups *groups = window_tab_groups (window);
+
+  TerminalTabGroup *group = terminal_tab_groups_find (groups, g_variant_get_uint32 (parameter));
+  if (group != nullptr)
+    terminal_tab_groups_ungroup (groups, group);
 }
 
 /* EasyTerminal: "Rename Tab…" */
@@ -2137,6 +2349,13 @@ terminal_window_init (TerminalWindow *window)
     { "set-title",           action_set_title_cb,        nullptr,   nullptr, nullptr },
     { "size-to",             action_size_to_cb,          "(uu)", nullptr, nullptr },
     { "tab-detach",          action_tab_detach_cb,       nullptr,   nullptr, nullptr },
+    { "tab-group-new",       action_tab_group_new_cb,    nullptr,   nullptr, nullptr },
+    { "tab-group-move",      action_tab_group_move_cb,   "u",    nullptr, nullptr },
+    { "tab-group-remove",    action_tab_group_remove_cb, nullptr,   nullptr, nullptr },
+    { "tab-group-collapse",  action_tab_group_collapse_cb, nullptr, nullptr, nullptr },
+    { "tab-group-expand",    action_tab_group_expand_cb, "u",    nullptr, nullptr },
+    { "tab-group-rename",    action_tab_group_rename_cb, "u",    nullptr, nullptr },
+    { "tab-group-ungroup",   action_tab_group_ungroup_cb, "u",   nullptr, nullptr },
     { "tab-move-left",       action_tab_move_left_cb,    nullptr,   nullptr, nullptr },
     { "tab-move-right",      action_tab_move_right_cb,   nullptr,   nullptr, nullptr },
     { "tab-switch-left",     action_tab_switch_left_cb,  nullptr,   nullptr, nullptr },
@@ -2734,6 +2953,38 @@ notebook_show_context_menu (TerminalWindow *window,
                                        "notebook-popup", &menu,
                                        nullptr);
 
+  /* EasyTerminal: tab group items, only those that apply to this tab */
+  TerminalWindowPrivate *priv = window->priv;
+  TerminalTabGroups *groups = window_tab_groups (window);
+  TerminalTabGroup *own = priv->active_screen ?
+    terminal_tab_groups_get_group_of (groups, priv->active_screen) : nullptr;
+
+  gs_unref_object GMenu *group_section = g_menu_new ();
+  g_menu_append (group_section, _("Move to _New Group…"), "win.tab-group-new");
+
+  gs_unref_object GMenu *move_submenu = g_menu_new ();
+  gs_free_list GList *all_groups = terminal_tab_groups_list (groups);
+  for (GList *l = all_groups; l != nullptr; l = l->next) {
+    TerminalTabGroup *group = (TerminalTabGroup*) l->data;
+    if (group == own)
+      continue;
+
+    gs_unref_object GMenuItem *item = g_menu_item_new (terminal_tab_group_get_name (group), nullptr);
+    g_menu_item_set_action_and_target (item, "win.tab-group-move", "u", terminal_tab_group_get_id (group));
+    g_menu_append_item (move_submenu, item);
+  }
+  if (g_menu_model_get_n_items (G_MENU_MODEL (move_submenu)) > 0)
+    g_menu_append_submenu (group_section, _("Move to _Group"), G_MENU_MODEL (move_submenu));
+
+  if (own != nullptr) {
+    g_menu_append (group_section, _("Remove from Gro_up"), "win.tab-group-remove");
+    if (!terminal_tab_group_get_collapsed (own))
+      g_menu_append (group_section, _("_Collapse Group"), "win.tab-group-collapse");
+  }
+
+  /* After "New Tab / Rename Tab" */
+  g_menu_insert_section (menu, 1, nullptr, G_MENU_MODEL (group_section));
+
   GtkWidget *popup_menu = context_menu_new (G_MENU_MODEL (menu), GTK_WIDGET (window));
 
   gtk_widget_set_halign (popup_menu, GTK_ALIGN_START);
@@ -2743,6 +2994,32 @@ notebook_show_context_menu (TerminalWindow *window,
 
   if (button == 0)
     gtk_menu_shell_select_first (GTK_MENU_SHELL (popup_menu), FALSE);
+}
+
+/* EasyTerminal: context menu of a collapsed group's chip */
+static void
+notebook_show_chip_menu (TerminalWindow *window,
+                         TerminalTabGroup *group,
+                         guint button,
+                         guint32 timestamp)
+{
+  guint id = terminal_tab_group_get_id (group);
+  gs_unref_object GMenu *menu = g_menu_new ();
+  gs_unref_object GMenuItem *expand = g_menu_item_new (_("_Expand Group"), nullptr);
+  g_menu_item_set_action_and_target (expand, "win.tab-group-expand", "u", id);
+  g_menu_append_item (menu, expand);
+  gs_unref_object GMenuItem *rename = g_menu_item_new (_("Re_name Group…"), nullptr);
+  g_menu_item_set_action_and_target (rename, "win.tab-group-rename", "u", id);
+  g_menu_append_item (menu, rename);
+  gs_unref_object GMenuItem *ungroup = g_menu_item_new (_("_Ungroup"), nullptr);
+  g_menu_item_set_action_and_target (ungroup, "win.tab-group-ungroup", "u", id);
+  g_menu_append_item (menu, ungroup);
+
+  GtkWidget *popup_menu = context_menu_new (G_MENU_MODEL (menu), GTK_WIDGET (window));
+  gtk_widget_set_halign (popup_menu, GTK_ALIGN_START);
+  gtk_menu_popup (GTK_MENU (popup_menu), nullptr, nullptr,
+                  nullptr, nullptr,
+                  button, timestamp);
 }
 
 static gboolean
@@ -2761,6 +3038,15 @@ notebook_button_press_cb (GtkWidget *widget,
   tab_clicked = find_tab_num_at_pos (notebook, event->x_root, event->y_root);
   if (tab_clicked < 0)
     return FALSE;
+
+  /* EasyTerminal: right-click on a group chip shows the group's menu and
+   * does not change the active tab */
+  TerminalTabGroup *chip_group =
+    terminal_tab_groups_get_chip_at (window_tab_groups (window), tab_clicked);
+  if (chip_group != nullptr) {
+    notebook_show_chip_menu (window, chip_group, event->button, event->time);
+    return TRUE;
+  }
 
   /* switch to the page the mouse is over */
   gtk_notebook_set_current_page (notebook, tab_clicked);

@@ -61,6 +61,16 @@ void            terminal_tab_label_set_bold   (TerminalTabLabel *tab_label,
 
 TerminalScreen *terminal_tab_label_get_screen (TerminalTabLabel *tab_label);
 
+/* EasyTerminal tab groups */
+void            terminal_tab_label_set_group_style (TerminalTabLabel *tab_label,
+                                                    int color,
+                                                    gboolean first,
+                                                    gboolean last);
+void            terminal_tab_label_set_chip        (TerminalTabLabel *tab_label,
+                                                    const char *name,
+                                                    int color,
+                                                    gboolean active);
+
 G_END_DECLS
 
 #endif /* !TERMINAL_TAB_LABEL_H */

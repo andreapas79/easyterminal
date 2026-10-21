@@ -26,6 +26,7 @@
 #include "terminal-tab-label.hh"
 #include "terminal-icon-button.hh"
 #include "terminal-window.hh"
+#include "terminal-libgsystem.hh"
 
 #define TERMINAL_TAB_LABEL_GET_PRIVATE(tab_label)(G_TYPE_INSTANCE_GET_PRIVATE ((tab_label), TERMINAL_TYPE_TAB_LABEL, TerminalTabLabelPrivate))
 
@@ -38,6 +39,11 @@ struct _TerminalTabLabelPrivate
   GtkWidget *close_button;
   gboolean bold;
   GtkPositionType tab_pos;
+
+  /* EasyTerminal tab groups */
+  GtkWidget *chip;   /* shown instead of label+close button when collapsed */
+  int group_color;   /* -1: not in a group */
+  gboolean is_chip;
 };
 
 enum
@@ -112,7 +118,7 @@ notify_tab_pos_cb (GtkNotebook *notebook,
       break;
     case GTK_POS_TOP:
     case GTK_POS_BOTTOM:
-      gtk_widget_show (priv->close_button);
+      gtk_widget_set_visible (priv->close_button, !priv->is_chip);
       break;
   }
 }
@@ -172,6 +178,7 @@ terminal_tab_label_init (TerminalTabLabel *tab_label)
   priv = tab_label->priv = TERMINAL_TAB_LABEL_GET_PRIVATE (tab_label);
 
   priv->tab_pos = (GtkPositionType) -1; /* invalid */
+  priv->group_color = -1;
 }
 
 static void
@@ -214,6 +221,14 @@ terminal_tab_label_constructed (GObject *object)
 		    G_CALLBACK (close_button_clicked_cb), tab_label);
 
   gtk_widget_show_all (hbox);
+
+  /* EasyTerminal: group chip, hidden until the tab's group is collapsed */
+  /* Not ellipsized: the chip asks for room for the whole group name (very
+   * long names are shortened in terminal_tab_label_set_chip) */
+  priv->chip = gtk_label_new (nullptr);
+  gtk_label_set_single_line_mode (GTK_LABEL (priv->chip), TRUE);
+  gtk_style_context_add_class (gtk_widget_get_style_context (priv->chip), "et-group-chip");
+  gtk_box_pack_start (GTK_BOX (hbox), priv->chip, FALSE, FALSE, 0);
 }
 
 static void
@@ -392,4 +407,97 @@ terminal_tab_label_get_screen (TerminalTabLabel *tab_label)
   g_return_val_if_fail (TERMINAL_IS_TAB_LABEL (tab_label), nullptr);
 
   return tab_label->priv->screen;
+}
+
+/* EasyTerminal tab groups */
+
+#define CHIP_MAX_CHARS (24)
+
+static void
+set_color_class (GtkWidget *widget,
+                 int color)
+{
+  GtkStyleContext *context = gtk_widget_get_style_context (widget);
+  for (int i = 0; i < 6; i++) {
+    char name[16];
+    g_snprintf (name, sizeof (name), "et-group-c%d", i);
+    if (i == color)
+      gtk_style_context_add_class (context, name);
+    else
+      gtk_style_context_remove_class (context, name);
+  }
+}
+
+static void
+set_class (GtkWidget *widget,
+           const char *name,
+           gboolean set)
+{
+  GtkStyleContext *context = gtk_widget_get_style_context (widget);
+  if (set)
+    gtk_style_context_add_class (context, name);
+  else
+    gtk_style_context_remove_class (context, name);
+}
+
+/**
+ * terminal_tab_label_set_group_style:
+ * @color: the group's colour index, or -1 when the tab is in no group
+ * @first, @last: whether the tab is the first/last of its group
+ *
+ * Shows the coloured underline of an expanded group's member.
+ */
+void
+terminal_tab_label_set_group_style (TerminalTabLabel *tab_label,
+                                    int color,
+                                    gboolean first,
+                                    gboolean last)
+{
+  TerminalTabLabelPrivate *priv = tab_label->priv;
+  GtkWidget *widget = GTK_WIDGET (tab_label);
+
+  priv->group_color = color;
+  set_class (widget, "et-group-member", color >= 0);
+  set_class (widget, "et-group-first", color >= 0 && first);
+  set_class (widget, "et-group-last", color >= 0 && last);
+  set_color_class (widget, color);
+}
+
+/**
+ * terminal_tab_label_set_chip:
+ * @name: the group name, or nullptr to show the normal tab label
+ * @color: the group's colour index
+ * @active: whether the active tab belongs to the group
+ *
+ * Turns the tab label into the chip of a collapsed group, or back.
+ */
+void
+terminal_tab_label_set_chip (TerminalTabLabel *tab_label,
+                             const char *name,
+                             int color,
+                             gboolean active)
+{
+  TerminalTabLabelPrivate *priv = tab_label->priv;
+  gboolean is_chip = name != nullptr;
+
+  if (is_chip) {
+    gs_free char *shown = g_utf8_strlen (name, -1) > CHIP_MAX_CHARS ?
+      g_utf8_substring (name, 0, CHIP_MAX_CHARS) : g_strdup (name);
+    gs_free char *text = g_strdup_printf ("\U0001F4C1 %s%s ▸", shown,
+                                          g_utf8_strlen (name, -1) > CHIP_MAX_CHARS ? "…" : "");
+    gtk_label_set_text (GTK_LABEL (priv->chip), text);
+    gtk_widget_set_tooltip_text (priv->chip, name);
+    set_color_class (priv->chip, color);
+    set_class (priv->chip, "et-group-chip-active", active);
+  }
+
+  if (priv->is_chip == is_chip)
+    return;
+
+  priv->is_chip = is_chip;
+  gtk_widget_set_visible (priv->chip, is_chip);
+  gtk_widget_set_visible (priv->label, !is_chip);
+  gtk_widget_set_visible (priv->close_button,
+                          !is_chip &&
+                          priv->tab_pos != GTK_POS_LEFT && priv->tab_pos != GTK_POS_RIGHT);
 }

@@ -20,6 +20,8 @@
 
 #include <gtk/gtk.h>
 
+#include "terminal-tab-group.hh"
+
 G_BEGIN_DECLS
 
 #define TERMINAL_TYPE_NOTEBOOK         (terminal_notebook_get_type ())
@@ -56,6 +58,14 @@ GtkPolicyType terminal_notebook_get_tab_policy (TerminalNotebook *notebook);
 
 GtkWidget *terminal_notebook_get_action_box (TerminalNotebook *notebook,
                                              GtkPackType pack_type);
+
+/* EasyTerminal */
+
+TerminalTabGroups *terminal_notebook_get_tab_groups (TerminalNotebook *notebook);
+
+int terminal_notebook_find_tab_num_at_pos (TerminalNotebook *notebook,
+                                           int screen_x,
+                                           int screen_y);
 
 G_END_DECLS
 

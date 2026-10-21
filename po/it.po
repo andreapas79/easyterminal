@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-terminal\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-21 19:52+0200\n"
+"POT-Creation-Date: 2026-10-21 23:36+0200\n"
 "PO-Revision-Date: 2021-03-16 16:00+0100\n"
 "Last-Translator: Gianvito Cavasoli <gianvito@gmx.it>\n"
 "Language-Team: Italian <gnome-it-list@gnome.org>\n"
@@ -24,80 +24,6 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
 "X-Generator: Gtranslator 3.38.0\n"
 "X-Project-Style: gnome\n"
-
-msgid "EasyTerminal"
-msgstr "EasyTerminal"
-
-msgid "EasyTerminal is a terminal emulator application for accessing a UNIX shell environment which can be used to run programs available on your system."
-msgstr "EasyTerminal è un emulatore di terminale per accedere all'ambiente shell UNIX che può essere usato per eseguire programmi disponibili nel proprio sistema."
-
-msgid "EasyTerminal is a personal fork of GNOME Terminal 3.44 that adds renamable tabs and collapsible tab groups."
-msgstr "EasyTerminal è un fork personale di GNOME Terminal 3.44 che aggiunge la rinomina delle schede e i gruppi di schede comprimibili."
-
-#, c-format
-msgid "Option “%s” is deprecated and might be removed in a later version of easyterminal."
-msgstr "L'opzione «%s» è deprecata e potrebbe essere rimossa in una futura versione di easyterminal."
-
-#, c-format
-msgid "Option “%s” is no longer supported in this version of easyterminal."
-msgstr "L'opzione «%s» non è più disponibile in questa versione di easyterminal."
-
-msgid "EasyTerminal Emulator"
-msgstr "Emulatore di terminale EasyTerminal"
-
-msgid "Show EasyTerminal options"
-msgstr "Mostra le opzioni di EasyTerminal"
-
-msgid "EasyTerminal is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version."
-msgstr "EasyTerminal è software libero; è possibile ridistribuirlo e/o modificarlo secondo i termini previsti dalla licenza GNU General Public License così come pubblicata dalla Free Software Foundation, versione 3 della Licenza o (a scelta) una versione più recente."
-
-msgid "EasyTerminal is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more details."
-msgstr "EasyTerminal è distribuito nella speranza che possa risultare utile, ma SENZA ALCUNA GARANZIA, nemmeno la garanzia implicita di COMMERCIABILITÀ o APPLICABILITÀ PER UNO SCOPO PARTICOLARE. Per maggiori dettagli consultare la GNU General Public License."
-
-msgid "You should have received a copy of the GNU General Public License along with EasyTerminal.  If not, see <http://www.gnu.org/licenses/>."
-msgstr "Una copia della GNU General Public License dovrebbe essere stata fornita con EasyTerminal. In caso contrario consultare la pagina <http://www.gnu.org/licenses/>."
-
-msgid "Re_name Tab…"
-msgstr "Ri_nomina scheda…"
-
-msgid "Rename Tab"
-msgstr "Rinomina scheda"
-
-msgid "_Tab name (leave empty to use the program’s title):"
-msgstr "_Nome della scheda (vuoto = titolo del programma):"
-
-msgid "_OK"
-msgstr "_OK"
-
-msgid "New Tab Group"
-msgstr "Nuovo gruppo di schede"
-
-msgid "Rename Tab Group"
-msgstr "Rinomina gruppo di schede"
-
-msgid "_Group name:"
-msgstr "_Nome del gruppo:"
-
-msgid "Move to _New Group…"
-msgstr "Sposta in nuovo _gruppo…"
-
-msgid "Move to _Group"
-msgstr "Sposta nel gr_uppo"
-
-msgid "Remove from Gro_up"
-msgstr "R_imuovi dal gruppo"
-
-msgid "_Collapse Group"
-msgstr "C_omprimi gruppo"
-
-msgid "_Expand Group"
-msgstr "_Espandi gruppo"
-
-msgid "Re_name Group…"
-msgstr "Ri_nomina gruppo…"
-
-msgid "_Ungroup"
-msgstr "_Sciogli gruppo"
 
 #: data/io.github.andreapas79.easyterminal.Nautilus.metainfo.xml.in:35
 msgid "org.gnome.Terminal.Nautilus"
@@ -126,28 +52,37 @@ msgid "Open a terminal from Files"
 msgstr "Apre un terminale da File"
 
 #: data/io.github.andreapas79.easyterminal.Nautilus.metainfo.xml.in:42
-msgid "Open Terminal is a plugin for the Files application that adds a menu item to the context menu to open a terminal in the currently browsed directory."
-msgstr "Apri terminale è un plugin per l'applicazione File che aggiunge una voce al menù contestuale per aprire un terminale nell'attuale directory in esplorazione."
+msgid ""
+"Open Terminal is a plugin for the Files application that adds a menu item to "
+"the context menu to open a terminal in the currently browsed directory."
+msgstr ""
+"Apri terminale è un plugin per l'applicazione File che aggiunge una voce al "
+"menù contestuale per aprire un terminale nell'attuale directory in "
+"esplorazione."
 
 #: data/io.github.andreapas79.easyterminal.Nautilus.metainfo.xml.in:44
-#: data/io.github.andreapas79.easyterminal.metainfo.xml.in:55
 msgid "https://wiki.gnome.org/Apps/Terminal"
 msgstr "https://wiki.gnome.org/Apps/Terminal"
 
 #. This is the name of a colour scheme
 #: data/io.github.andreapas79.easyterminal.Nautilus.metainfo.xml.in:45
-#: src/preferences.ui:214
+#: src/preferences.ui:219
 msgid "GNOME"
 msgstr "GNOME"
 
 #: data/io.github.andreapas79.easyterminal.Nautilus.metainfo.xml.in:46
-#: data/io.github.andreapas79.easyterminal.metainfo.xml.in:56
 msgid "https://wiki.gnome.org/Apps/Terminal/ReportingBugs"
 msgstr "https://wiki.gnome.org/Apps/Terminal/ReportingBugs"
 
 #: data/io.github.andreapas79.easyterminal.Nautilus.metainfo.xml.in:47
 msgid "gnome-terminal"
 msgstr "gnome-terminal"
+
+#: data/io.github.andreapas79.easyterminal.desktop.in:3
+#: data/io.github.andreapas79.easyterminal.metainfo.xml.in:38
+#: src/terminal-util.cc:249
+msgid "EasyTerminal"
+msgstr "EasyTerminal"
 
 #: data/io.github.andreapas79.easyterminal.desktop.in:4
 #: data/io.github.andreapas79.easyterminal.metainfo.xml.in:39
@@ -158,11 +93,13 @@ msgstr "Usa la riga di comando"
 msgid "shell;prompt;command;commandline;cmd;"
 msgstr "shell;prompt;terminale;rigadicomando;comando;cmd;"
 
-#: data/io.github.andreapas79.easyterminal.desktop.in:17 src/terminal-accels.cc:127
+#: data/io.github.andreapas79.easyterminal.desktop.in:18
+#: src/terminal-accels.cc:127
 msgid "New Window"
 msgstr "Nuova finestra"
 
-#: data/io.github.andreapas79.easyterminal.desktop.in:21 src/terminal-accels.cc:146
+#: data/io.github.andreapas79.easyterminal.desktop.in:22
+#: src/terminal-accels.cc:146
 msgid "Preferences"
 msgstr "Preferenze"
 
@@ -170,9 +107,30 @@ msgstr "Preferenze"
 msgid "io.github.andreapas79.easyterminal.desktop"
 msgstr ""
 
+#: data/io.github.andreapas79.easyterminal.metainfo.xml.in:41
+msgid ""
+"EasyTerminal is a terminal emulator application for accessing a UNIX shell "
+"environment which can be used to run programs available on your system."
+msgstr ""
+"EasyTerminal è un emulatore di terminale per accedere all'ambiente shell "
+"UNIX che può essere usato per eseguire programmi disponibili nel proprio "
+"sistema."
+
 #: data/io.github.andreapas79.easyterminal.metainfo.xml.in:42
-msgid "It supports several profiles, multiple tabs and implements several keyboard shortcuts."
-msgstr "Supporta molteplici profili, schede multiple e implementa molte scorciatoie da tastiera."
+msgid ""
+"It supports several profiles, multiple tabs and implements several keyboard "
+"shortcuts."
+msgstr ""
+"Supporta molteplici profili, schede multiple e implementa molte scorciatoie "
+"da tastiera."
+
+#: data/io.github.andreapas79.easyterminal.metainfo.xml.in:43
+msgid ""
+"EasyTerminal is a personal fork of GNOME Terminal 3.44 that adds renamable "
+"tabs and collapsible tab groups."
+msgstr ""
+"EasyTerminal è un fork personale di GNOME Terminal 3.44 che aggiunge la "
+"rinomina delle schede e i gruppi di schede comprimibili."
 
 #: data/io.github.andreapas79.easyterminal.metainfo.xml.in:46
 msgid "console"
@@ -198,6 +156,15 @@ msgstr "HighContrast"
 msgid "ModernToolkit"
 msgstr "ModernToolkit"
 
+#: data/io.github.andreapas79.easyterminal.metainfo.xml.in:55
+msgid "https://github.com/andreapas79/easyterminal"
+msgstr ""
+
+#: data/io.github.andreapas79.easyterminal.metainfo.xml.in:56
+#: data/io.github.andreapas79.easyterminal.metainfo.xml.in:57
+msgid "https://github.com/andreapas79/easyterminal/issues"
+msgstr ""
+
 #. Translators: Keep single quote please!
 #: src/io.github.andreapas79.easyterminal.gschema.xml:133
 msgctxt "visible-name"
@@ -217,40 +184,69 @@ msgid "Default color of text in the terminal"
 msgstr "Colore predefinito per il testo del terminale"
 
 #: src/io.github.andreapas79.easyterminal.gschema.xml:140
-msgid "Default color of text in the terminal, as a color specification (can be HTML-style hex digits, or a color name such as “red”)."
-msgstr "Colore predefinito del testo del terminale, come una specifica di colore (può essere un numero esadecimale in stile HTML oppure il nome di un colore come \"red\")."
+msgid ""
+"Default color of text in the terminal, as a color specification (can be HTML-"
+"style hex digits, or a color name such as “red”)."
+msgstr ""
+"Colore predefinito del testo del terminale, come una specifica di colore "
+"(può essere un numero esadecimale in stile HTML oppure il nome di un colore "
+"come \"red\")."
 
 #: src/io.github.andreapas79.easyterminal.gschema.xml:144
 msgid "Default color of terminal background"
 msgstr "Colore predefinito dello sfondo del terminale"
 
 #: src/io.github.andreapas79.easyterminal.gschema.xml:145
-msgid "Default color of terminal background, as a color specification (can be HTML-style hex digits, or a color name such as “red”)."
-msgstr "Colore predefinito dello sfondo del terminale, come una specifica di colore (può essere un numero esadecimale in stile HTML oppure il nome di un colore come \"red\")."
+msgid ""
+"Default color of terminal background, as a color specification (can be HTML-"
+"style hex digits, or a color name such as “red”)."
+msgstr ""
+"Colore predefinito dello sfondo del terminale, come una specifica di colore "
+"(può essere un numero esadecimale in stile HTML oppure il nome di un colore "
+"come \"red\")."
 
 #: src/io.github.andreapas79.easyterminal.gschema.xml:149
 msgid "Default color of bold text in the terminal"
 msgstr "Colore predefinito per il testo in grassetto del terminale"
 
 #: src/io.github.andreapas79.easyterminal.gschema.xml:150
-msgid "Default color of bold text in the terminal, as a color specification (can be HTML-style hex digits, or a color name such as “red”). This is ignored if bold-color-same-as-fg is true."
-msgstr "Colore predefinito del testo in grassetto nel terminale, come una specifica di colore (può essere un numero esadecimale in stile HTML oppure il nome di un colore come \"red\"). Questo è ignorato se bold-color-same-as-fg è impostato a VERO."
+msgid ""
+"Default color of bold text in the terminal, as a color specification (can be "
+"HTML-style hex digits, or a color name such as “red”). This is ignored if "
+"bold-color-same-as-fg is true."
+msgstr ""
+"Colore predefinito del testo in grassetto nel terminale, come una specifica "
+"di colore (può essere un numero esadecimale in stile HTML oppure il nome di "
+"un colore come \"red\"). Questo è ignorato se bold-color-same-as-fg è "
+"impostato a VERO."
 
 #: src/io.github.andreapas79.easyterminal.gschema.xml:154
 msgid "Whether bold text should use the same color as normal text"
-msgstr "Indica se il testo in grassetto deve avere lo stesso colore del testo normale"
+msgstr ""
+"Indica se il testo in grassetto deve avere lo stesso colore del testo normale"
 
 #: src/io.github.andreapas79.easyterminal.gschema.xml:155
-msgid "If true, boldface text will be rendered using the same color as normal text."
-msgstr "Se VERO, il testo in grassetto verrà visualizzato utilizzando lo stesso colore del testo normale."
+msgid ""
+"If true, boldface text will be rendered using the same color as normal text."
+msgstr ""
+"Se VERO, il testo in grassetto verrà visualizzato utilizzando lo stesso "
+"colore del testo normale."
 
 #: src/io.github.andreapas79.easyterminal.gschema.xml:160
-msgid "Scale factor for the cell height to increase line spacing. (Does not increase the font’s height.)"
-msgstr "Fattore di scala dell'altezza della cella per aumentare l'interlinea (non aumenta l'altezza del carattere)."
+msgid ""
+"Scale factor for the cell height to increase line spacing. (Does not "
+"increase the font’s height.)"
+msgstr ""
+"Fattore di scala dell'altezza della cella per aumentare l'interlinea (non "
+"aumenta l'altezza del carattere)."
 
 #: src/io.github.andreapas79.easyterminal.gschema.xml:165
-msgid "Scale factor for the cell width to increase letter spacing. (Does not increase the font’s width.)"
-msgstr "Fattore di scala della larghezza della cella per aumentare la spaziatura delle lettere (non aumenta l'altezza del carattere)."
+msgid ""
+"Scale factor for the cell width to increase letter spacing. (Does not "
+"increase the font’s width.)"
+msgstr ""
+"Fattore di scala della larghezza della cella per aumentare la spaziatura "
+"delle lettere (non aumenta l'altezza del carattere)."
 
 #: src/io.github.andreapas79.easyterminal.gschema.xml:169
 msgid "Whether to use custom cursor colors"
@@ -265,16 +261,30 @@ msgid "Cursor background color"
 msgstr "Colore di sfondo del cursore"
 
 #: src/io.github.andreapas79.easyterminal.gschema.xml:175
-msgid "Custom color of the background of the terminal’s cursor, as a color specification (can be HTML-style hex digits, or a color name such as “red”). This is ignored if cursor-colors-set is false."
-msgstr "Colore personalizzato dello sfondo del cursore del terminale, come una specifica di colore (può essere un numero esadecimale in stile HTML oppure il nome di un colore come \"red\"). Questo è ignorato se cursor-colors-set è impostato a FALSO."
+msgid ""
+"Custom color of the background of the terminal’s cursor, as a color "
+"specification (can be HTML-style hex digits, or a color name such as “red”). "
+"This is ignored if cursor-colors-set is false."
+msgstr ""
+"Colore personalizzato dello sfondo del cursore del terminale, come una "
+"specifica di colore (può essere un numero esadecimale in stile HTML oppure "
+"il nome di un colore come \"red\"). Questo è ignorato se cursor-colors-set è "
+"impostato a FALSO."
 
 #: src/io.github.andreapas79.easyterminal.gschema.xml:179
 msgid "Cursor foreground colour"
 msgstr "Colore di primo piano del cursore"
 
 #: src/io.github.andreapas79.easyterminal.gschema.xml:180
-msgid "Custom color for the foreground of the text character at the terminal’s cursor position, as a color specification (can be HTML-style hex digits, or a color name such as “red”). This is ignored if cursor-colors-set is false."
-msgstr "Colore personalizzato per il primo piano del carattere di testo alla posizione del cursore del terminale, come una specifica di colore (può essere un numero esadecimale in stile HTML oppure il nome di un colore come \"red\"). Questo è ignorato se cursor-colors-set è impostato a FALSO."
+msgid ""
+"Custom color for the foreground of the text character at the terminal’s "
+"cursor position, as a color specification (can be HTML-style hex digits, or "
+"a color name such as “red”). This is ignored if cursor-colors-set is false."
+msgstr ""
+"Colore personalizzato per il primo piano del carattere di testo alla "
+"posizione del cursore del terminale, come una specifica di colore (può "
+"essere un numero esadecimale in stile HTML oppure il nome di un colore come "
+"\"red\"). Questo è ignorato se cursor-colors-set è impostato a FALSO."
 
 #: src/io.github.andreapas79.easyterminal.gschema.xml:184
 msgid "Whether to use custom highlight colors"
@@ -289,16 +299,31 @@ msgid "Highlight background color"
 msgstr "Colore di sfondo dell'evidenziazione"
 
 #: src/io.github.andreapas79.easyterminal.gschema.xml:190
-msgid "Custom color of the background of the terminal’s highlight, as a color specification (can be HTML-style hex digits, or a color name such as “red”). This is ignored if highlight-colors-set is false."
-msgstr "Colore personalizzato dello sfondo delle evidenziazioni del terminale, come una specifica di colore (può essere un numero esadecimale in stile HTML oppure il nome di un colore come \"red\"). Questo è ignorato se highlight-colors-set è impostato a FALSO."
+msgid ""
+"Custom color of the background of the terminal’s highlight, as a color "
+"specification (can be HTML-style hex digits, or a color name such as “red”). "
+"This is ignored if highlight-colors-set is false."
+msgstr ""
+"Colore personalizzato dello sfondo delle evidenziazioni del terminale, come "
+"una specifica di colore (può essere un numero esadecimale in stile HTML "
+"oppure il nome di un colore come \"red\"). Questo è ignorato se highlight-"
+"colors-set è impostato a FALSO."
 
 #: src/io.github.andreapas79.easyterminal.gschema.xml:194
 msgid "Highlight foreground colour"
 msgstr "Colore di primo piano dell'evidenziazione"
 
 #: src/io.github.andreapas79.easyterminal.gschema.xml:195
-msgid "Custom color for the foreground of the text character at the terminal’s highlight position, as a color specification (can be HTML-style hex digits, or a color name such as “red”). This is ignored if highlight-colors-set is false."
-msgstr "Colore personalizzato per il primo piano del carattere di testo alla posizione delle evidenziazioni del terminale, come una specifica di colore (può essere un numero esadecimale in stile HTML oppure il nome di un colore come \"red\"). Questo è ignorato se highlight-colors-set è FALSO."
+msgid ""
+"Custom color for the foreground of the text character at the terminal’s "
+"highlight position, as a color specification (can be HTML-style hex digits, "
+"or a color name such as “red”). This is ignored if highlight-colors-set is "
+"false."
+msgstr ""
+"Colore personalizzato per il primo piano del carattere di testo alla "
+"posizione delle evidenziazioni del terminale, come una specifica di colore "
+"(può essere un numero esadecimale in stile HTML oppure il nome di un colore "
+"come \"red\"). Questo è ignorato se highlight-colors-set è FALSO."
 
 #: src/io.github.andreapas79.easyterminal.gschema.xml:199
 msgid "Whether to perform bidirectional text rendering"
@@ -306,7 +331,8 @@ msgstr "Indica se eseguire il rendering del testo bidirezionale"
 
 #: src/io.github.andreapas79.easyterminal.gschema.xml:200
 msgid "If true, perform bidirectional text rendering (“BiDi”)."
-msgstr "Se impostato a VERO, esegue il rendering bidirezionale del testo (“BiDi”)."
+msgstr ""
+"Se impostato a VERO, esegue il rendering bidirezionale del testo (“BiDi”)."
 
 #: src/io.github.andreapas79.easyterminal.gschema.xml:204
 msgid "Whether to perform Arabic shaping"
@@ -322,39 +348,57 @@ msgstr "Indica se abilitare le immagini SIXEL"
 
 #: src/io.github.andreapas79.easyterminal.gschema.xml:210
 msgid "If true, SIXEL sequences are parsed and images are rendered."
-msgstr "Se VERO, le sequenze SIXEL vengono analizzate e viene eseguito il render sulle immagini."
+msgstr ""
+"Se VERO, le sequenze SIXEL vengono analizzate e viene eseguito il render "
+"sulle immagini."
 
 #: src/io.github.andreapas79.easyterminal.gschema.xml:214
 msgid "Whether bold is also bright"
 msgstr "Indica se il grassetto è anche molto chiaro"
 
 #: src/io.github.andreapas79.easyterminal.gschema.xml:215
-msgid "If true, setting bold on the first 8 colors also switches to their bright variants."
-msgstr "Se impostata a VERO, imposta il grassetto sui primi 8 colori e passa anche alle loro varianti molto chiare."
+msgid ""
+"If true, setting bold on the first 8 colors also switches to their bright "
+"variants."
+msgstr ""
+"Se impostata a VERO, imposta il grassetto sui primi 8 colori e passa anche "
+"alle loro varianti molto chiare."
 
 #: src/io.github.andreapas79.easyterminal.gschema.xml:219
 msgid "Whether to ring the terminal bell"
 msgstr "Indica se usare l'avviso acustico"
 
 #: src/io.github.andreapas79.easyterminal.gschema.xml:223
-msgid "List of ASCII punctuation characters that are not to be treated as part of a word when doing word-wise selection"
-msgstr "Elenco di caratteri di punteggiatura ASCII che non vengono trattati come parte di una parola quando si esegue la selezione per parola"
+msgid ""
+"List of ASCII punctuation characters that are not to be treated as part of a "
+"word when doing word-wise selection"
+msgstr ""
+"Elenco di caratteri di punteggiatura ASCII che non vengono trattati come "
+"parte di una parola quando si esegue la selezione per parola"
 
 #: src/io.github.andreapas79.easyterminal.gschema.xml:228
 msgid "Default number of columns"
 msgstr "Numero predefinito di colonne"
 
 #: src/io.github.andreapas79.easyterminal.gschema.xml:229
-msgid "Number of columns in newly created terminal windows. Has no effect if use_custom_default_size is not enabled."
-msgstr "Numero di colonne in una nuova finestra del terminale. Non ha effetto se use_custom_default_size non è abilitato."
+msgid ""
+"Number of columns in newly created terminal windows. Has no effect if "
+"use_custom_default_size is not enabled."
+msgstr ""
+"Numero di colonne in una nuova finestra del terminale. Non ha effetto se "
+"use_custom_default_size non è abilitato."
 
 #: src/io.github.andreapas79.easyterminal.gschema.xml:234
 msgid "Default number of rows"
 msgstr "Numero predefinito di righe"
 
 #: src/io.github.andreapas79.easyterminal.gschema.xml:235
-msgid "Number of rows in newly created terminal windows. Has no effect if use_custom_default_size is not enabled."
-msgstr "Numero di righe in una nuova finestra del terminale. Non ha effetto se use_custom_default_size non è abilitato."
+msgid ""
+"Number of rows in newly created terminal windows. Has no effect if "
+"use_custom_default_size is not enabled."
+msgstr ""
+"Numero di righe in una nuova finestra del terminale. Non ha effetto se "
+"use_custom_default_size non è abilitato."
 
 #: src/io.github.andreapas79.easyterminal.gschema.xml:239
 msgid "When to show the scrollbar"
@@ -365,16 +409,31 @@ msgid "Number of lines to keep in scrollback"
 msgstr "Numero di righe da mantenere per scorrere all'indietro"
 
 #: src/io.github.andreapas79.easyterminal.gschema.xml:244
-msgid "Number of scrollback lines to keep around. You can scroll back in the terminal by this number of lines; lines that don’t fit in the scrollback are discarded. If scrollback_unlimited is true, this value is ignored."
-msgstr "Numero di righe per scorrere all'indietro. È possibile scorrere all'indietro nel terminale di questo numero di righe, le righe in più vengono scartate. Se scrollback_unlimited è impostato a VERO, questo valore viene ignorato."
+msgid ""
+"Number of scrollback lines to keep around. You can scroll back in the "
+"terminal by this number of lines; lines that don’t fit in the scrollback are "
+"discarded. If scrollback_unlimited is true, this value is ignored."
+msgstr ""
+"Numero di righe per scorrere all'indietro. È possibile scorrere all'indietro "
+"nel terminale di questo numero di righe, le righe in più vengono scartate. "
+"Se scrollback_unlimited è impostato a VERO, questo valore viene ignorato."
 
 #: src/io.github.andreapas79.easyterminal.gschema.xml:248
 msgid "Whether an unlimited number of lines should be kept in scrollback"
-msgstr "Indica se un numero illimitato di righe deve essere mantenuto nello scorrimento all'indietro"
+msgstr ""
+"Indica se un numero illimitato di righe deve essere mantenuto nello "
+"scorrimento all'indietro"
 
 #: src/io.github.andreapas79.easyterminal.gschema.xml:249
-msgid "If true, scrollback lines will never be discarded. The scrollback history is stored on disk temporarily, so this may cause the system to run out of disk space if there is a lot of output to the terminal."
-msgstr "Se VERO, le righe precedenti non verranno mai cancellate. La cronologia delle righe viene archiviata temporaneamente sul disco, questo potrebbe causare il superamento dello spazio disponibile se c'è molto output nel terminale."
+msgid ""
+"If true, scrollback lines will never be discarded. The scrollback history is "
+"stored on disk temporarily, so this may cause the system to run out of disk "
+"space if there is a lot of output to the terminal."
+msgstr ""
+"Se VERO, le righe precedenti non verranno mai cancellate. La cronologia "
+"delle righe viene archiviata temporaneamente sul disco, questo potrebbe "
+"causare il superamento dello spazio disponibile se c'è molto output nel "
+"terminale."
 
 #: src/io.github.andreapas79.easyterminal.gschema.xml:253
 msgid "Whether to scroll to the bottom when a key is pressed"
@@ -382,63 +441,93 @@ msgstr "Indica se far scorrere alla fine quando viene premuto un tasto"
 
 #: src/io.github.andreapas79.easyterminal.gschema.xml:254
 msgid "If true, pressing a key jumps the scrollbar to the bottom."
-msgstr "Se VERO, porta la barra di scorrimento alla fine quando si preme un tasto."
+msgstr ""
+"Se VERO, porta la barra di scorrimento alla fine quando si preme un tasto."
 
 #: src/io.github.andreapas79.easyterminal.gschema.xml:258
 msgid "Whether to scroll to the bottom when there’s new output"
 msgstr "Indica se far scorrere in fondo quando c'è nuovo output"
 
 #: src/io.github.andreapas79.easyterminal.gschema.xml:259
-msgid "If true, whenever there’s new output the terminal will scroll to the bottom."
-msgstr "Se VERO, quando ci sarà nuovo output il terminale scorrerà fino al termine."
+msgid ""
+"If true, whenever there’s new output the terminal will scroll to the bottom."
+msgstr ""
+"Se VERO, quando ci sarà nuovo output il terminale scorrerà fino al termine."
 
 #: src/io.github.andreapas79.easyterminal.gschema.xml:263
 msgid "What to do with the terminal when the child command exits"
 msgstr "Cosa fare con il terminale quando il processo figlio termina"
 
 #: src/io.github.andreapas79.easyterminal.gschema.xml:264
-msgid "Possible values are “close” to close the terminal, “restart” to restart the command, and “hold” to keep the terminal open with no command running inside."
-msgstr "Possibili valori sono \"close\" per chiudere il terminale e \"restart\" per riavviare il comando e \"hold\" per mantenere il terminale aperto con nessun comando in esecuzione all'interno."
+msgid ""
+"Possible values are “close” to close the terminal, “restart” to restart the "
+"command, and “hold” to keep the terminal open with no command running inside."
+msgstr ""
+"Possibili valori sono \"close\" per chiudere il terminale e \"restart\" per "
+"riavviare il comando e \"hold\" per mantenere il terminale aperto con nessun "
+"comando in esecuzione all'interno."
 
 #: src/io.github.andreapas79.easyterminal.gschema.xml:268
 msgid "Whether to launch the command in the terminal as a login shell"
 msgstr "Indica se avviare il comando nel terminale come shell di login"
 
 #: src/io.github.andreapas79.easyterminal.gschema.xml:269
-msgid "If true, the command inside the terminal will be launched as a login shell (argv[0] will have a hyphen in front of it)."
-msgstr "Se VERO, il comando nel terminale sarà lanciato come shell di login (argv[0] avrà un trattino davanti)."
+msgid ""
+"If true, the command inside the terminal will be launched as a login shell "
+"(argv[0] will have a hyphen in front of it)."
+msgstr ""
+"Se VERO, il comando nel terminale sarà lanciato come shell di login (argv[0] "
+"avrà un trattino davanti)."
 
 #: src/io.github.andreapas79.easyterminal.gschema.xml:273
 msgid "Whether to preserve the working directory when opening a new terminal"
-msgstr "Indica se conservare la directory di lavoro quando si apre un nuovo terminale"
+msgstr ""
+"Indica se conservare la directory di lavoro quando si apre un nuovo terminale"
 
 #: src/io.github.andreapas79.easyterminal.gschema.xml:274
-msgid "Controls when opening a new terminal from a previous one carries over the working directory of the opening terminal to the new one."
-msgstr "Controlla quando si apre un nuovo terminale da uno precedente e si porta la directory di lavoro dal terminale aperto a quello nuovo."
+msgid ""
+"Controls when opening a new terminal from a previous one carries over the "
+"working directory of the opening terminal to the new one."
+msgstr ""
+"Controlla quando si apre un nuovo terminale da uno precedente e si porta la "
+"directory di lavoro dal terminale aperto a quello nuovo."
 
 #: src/io.github.andreapas79.easyterminal.gschema.xml:280
 msgid "Whether to run a custom command instead of the shell"
 msgstr "Indica se eseguire un comando personalizzato invece della shell"
 
 #: src/io.github.andreapas79.easyterminal.gschema.xml:281
-msgid "If true, the value of the custom_command setting will be used in place of running a shell."
-msgstr "Se VERO, sarà usato il valore dell'impostazione custom_command invece di eseguire una shell."
+msgid ""
+"If true, the value of the custom_command setting will be used in place of "
+"running a shell."
+msgstr ""
+"Se VERO, sarà usato il valore dell'impostazione custom_command invece di "
+"eseguire una shell."
 
 #: src/io.github.andreapas79.easyterminal.gschema.xml:285
 msgid "Whether to blink the cursor"
 msgstr "Indica se il cursore deve lampeggiare"
 
 #: src/io.github.andreapas79.easyterminal.gschema.xml:286
-msgid "The possible values are “system” to use the global cursor blinking settings, or “on” or “off” to set the mode explicitly."
-msgstr "I possibili valori sono \"system\" per usare le impostazioni globali di lampeggiamento del cursore oppure \"on\" od \"off\" per impostare il cursore in modo esplicito."
+msgid ""
+"The possible values are “system” to use the global cursor blinking settings, "
+"or “on” or “off” to set the mode explicitly."
+msgstr ""
+"I possibili valori sono \"system\" per usare le impostazioni globali di "
+"lampeggiamento del cursore oppure \"on\" od \"off\" per impostare il cursore "
+"in modo esplicito."
 
 #: src/io.github.andreapas79.easyterminal.gschema.xml:290
 msgid "The cursor appearance"
 msgstr "L'aspetto del cursore"
 
 #: src/io.github.andreapas79.easyterminal.gschema.xml:294
-msgid "Possible values are “always” or “never” allow blinking text, or only when the terminal is “focused” or “unfocused”."
-msgstr "I valori possibili che consentono al testo di lampeggiare sono \"always\" o \"never\", oppure quando il terminale è \"focused\" o \"unfocused\"."
+msgid ""
+"Possible values are “always” or “never” allow blinking text, or only when "
+"the terminal is “focused” or “unfocused”."
+msgstr ""
+"I valori possibili che consentono al testo di lampeggiare sono \"always\" o "
+"\"never\", oppure quando il terminale è \"focused\" o \"unfocused\"."
 
 #: src/io.github.andreapas79.easyterminal.gschema.xml:298
 msgid "Custom command to use instead of the shell"
@@ -446,7 +535,8 @@ msgstr "Comando personalizzato da usare invece della shell"
 
 #: src/io.github.andreapas79.easyterminal.gschema.xml:299
 msgid "Run this command in place of the shell, if use_custom_command is true."
-msgstr "Esegue questo comando al posto della shell se use_custom_command è VERO."
+msgstr ""
+"Esegue questo comando al posto della shell se use_custom_command è VERO."
 
 #: src/io.github.andreapas79.easyterminal.gschema.xml:318
 msgid "Palette for terminal applications"
@@ -474,241 +564,312 @@ msgstr "Indica se usare il tipo di carattere a spaziatura fissa di sistema"
 
 #: src/io.github.andreapas79.easyterminal.gschema.xml:342
 msgid "Whether to rewrap the terminal contents on window resize"
-msgstr "Indica se riadattare automaticamente i contenuti del terminale al ridimensionamento della finestra"
+msgstr ""
+"Indica se riadattare automaticamente i contenuti del terminale al "
+"ridimensionamento della finestra"
 
 #: src/io.github.andreapas79.easyterminal.gschema.xml:346
 msgid "Which encoding to use"
 msgstr "Codifica da usare"
 
 #: src/io.github.andreapas79.easyterminal.gschema.xml:350
-msgid "Whether ambiguous-width characters are narrow or wide when using UTF-8 encoding"
-msgstr "Indica se i caratteri a larghezza ambigua sono stretti o estesi quando si usa la codifica UTF-8"
+msgid ""
+"Whether ambiguous-width characters are narrow or wide when using UTF-8 "
+"encoding"
+msgstr ""
+"Indica se i caratteri a larghezza ambigua sono stretti o estesi quando si "
+"usa la codifica UTF-8"
 
-#: src/io.github.andreapas79.easyterminal.gschema.xml:359
+#: src/io.github.andreapas79.easyterminal.gschema.xml:354
+msgid "Whether to use a transparent background"
+msgstr "Indica se usare uno sfondo trasparente"
+
+#: src/io.github.andreapas79.easyterminal.gschema.xml:358
+msgid ""
+"Whether to use the value of TerminalScreen-background-darkness, if "
+"available, from the theme for the transparency value."
+msgstr ""
+"Indica se usare il valore di TerminalScreen-background-darkness, se "
+"disponibile, dal tema per il valore della trasparenza."
+
+#: src/io.github.andreapas79.easyterminal.gschema.xml:363
+msgid "Adjust the amount of transparency"
+msgstr "Regola la trasparenza"
+
+#: src/io.github.andreapas79.easyterminal.gschema.xml:364
+msgid ""
+"A value between 0 and 100, where 0 is opaque and 100 is fully transparent."
+msgstr ""
+"Una valore tra 0 e 100, dove 0 indica opaco e 100 completamente trasparente."
+
+#: src/io.github.andreapas79.easyterminal.gschema.xml:373
 msgid "Keyboard shortcut to open a new tab"
 msgstr "Scorciatoia da tastiera per aprire una nuova scheda"
 
-#: src/io.github.andreapas79.easyterminal.gschema.xml:363
+#: src/io.github.andreapas79.easyterminal.gschema.xml:377
 msgid "Keyboard shortcut to open a new window"
 msgstr "Scorciatoia da tastiera per aprire una nuova finestra"
 
-#: src/io.github.andreapas79.easyterminal.gschema.xml:367
+#: src/io.github.andreapas79.easyterminal.gschema.xml:381
 msgid "Keyboard shortcut to save the current tab contents to file"
-msgstr "Scorciatoia da tastiera per salvare i contenuti della scheda attuale in un file"
+msgstr ""
+"Scorciatoia da tastiera per salvare i contenuti della scheda attuale in un "
+"file"
 
-#: src/io.github.andreapas79.easyterminal.gschema.xml:371
-msgid "Keyboard shortcut to export the current tab contents to file in various formats"
-msgstr "Scorciatoia da tastiera per esportare i contenuti della scheda attuale in file di vari formati"
+#: src/io.github.andreapas79.easyterminal.gschema.xml:385
+msgid ""
+"Keyboard shortcut to export the current tab contents to file in various "
+"formats"
+msgstr ""
+"Scorciatoia da tastiera per esportare i contenuti della scheda attuale in "
+"file di vari formati"
 
-#: src/io.github.andreapas79.easyterminal.gschema.xml:375
+#: src/io.github.andreapas79.easyterminal.gschema.xml:389
 msgid "Keyboard shortcut to print the current tab contents to printer or file"
-msgstr "Scorciatoia da tastiera per stampare i contenuti dell'attuale su stampante o file"
+msgstr ""
+"Scorciatoia da tastiera per stampare i contenuti dell'attuale su stampante o "
+"file"
 
-#: src/io.github.andreapas79.easyterminal.gschema.xml:379
+#: src/io.github.andreapas79.easyterminal.gschema.xml:393
 msgid "Keyboard shortcut to close a tab"
 msgstr "Scorciatoia da tastiera per chiudere una scheda"
 
-#: src/io.github.andreapas79.easyterminal.gschema.xml:383
+#: src/io.github.andreapas79.easyterminal.gschema.xml:397
 msgid "Keyboard shortcut to close a window"
 msgstr "Scorciatoia da tastiera per chiudere una finestra"
 
-#: src/io.github.andreapas79.easyterminal.gschema.xml:387
+#: src/io.github.andreapas79.easyterminal.gschema.xml:401
 msgid "Keyboard shortcut to copy text"
 msgstr "Scorciatoia da tastiera per copiare il testo"
 
-#: src/io.github.andreapas79.easyterminal.gschema.xml:391
+#: src/io.github.andreapas79.easyterminal.gschema.xml:405
 msgid "Keyboard shortcut to copy text as HTML"
 msgstr "Scorciatoia da tastiera per copiare il testo come HTML"
 
-#: src/io.github.andreapas79.easyterminal.gschema.xml:395
+#: src/io.github.andreapas79.easyterminal.gschema.xml:409
 msgid "Keyboard shortcut to paste text"
 msgstr "Scorciatoia da tastiera per incollare il testo"
 
-#: src/io.github.andreapas79.easyterminal.gschema.xml:399
+#: src/io.github.andreapas79.easyterminal.gschema.xml:413
 msgid "Keyboard shortcut to select all text"
 msgstr "Scorciatoia da tastiera per selezionare tutto il testo"
 
-#: src/io.github.andreapas79.easyterminal.gschema.xml:403
+#: src/io.github.andreapas79.easyterminal.gschema.xml:417
 msgid "Keyboard shortcut to open the Preferences dialog"
 msgstr "Scorciatoia da tastiera per aprire il dialogo delle preferenze"
 
-#: src/io.github.andreapas79.easyterminal.gschema.xml:407
+#: src/io.github.andreapas79.easyterminal.gschema.xml:421
 msgid "Keyboard shortcut to toggle full screen mode"
-msgstr "Scorciatoia da tastiera per attivare/disattivare la modalità schermo intero"
+msgstr ""
+"Scorciatoia da tastiera per attivare/disattivare la modalità schermo intero"
 
-#: src/io.github.andreapas79.easyterminal.gschema.xml:411
+#: src/io.github.andreapas79.easyterminal.gschema.xml:425
 msgid "Keyboard shortcut to toggle the visibility of the menubar"
-msgstr "Scorciatoia da tastiera per attivare/diattivare la visibilità della barra dei menù"
+msgstr ""
+"Scorciatoia da tastiera per attivare/diattivare la visibilità della barra "
+"dei menù"
 
-#: src/io.github.andreapas79.easyterminal.gschema.xml:415
+#: src/io.github.andreapas79.easyterminal.gschema.xml:429
 msgid "Keyboard shortcut to toggle the read-only state"
-msgstr "Scorciatoia da tastiera per attivare/disattivare la modalità solo lettura"
+msgstr ""
+"Scorciatoia da tastiera per attivare/disattivare la modalità solo lettura"
 
-#: src/io.github.andreapas79.easyterminal.gschema.xml:419
+#: src/io.github.andreapas79.easyterminal.gschema.xml:433
 msgid "Keyboard shortcut to reset the terminal"
 msgstr "Scorciatoia da tastiera per ripristinare il terminale"
 
-#: src/io.github.andreapas79.easyterminal.gschema.xml:423
+#: src/io.github.andreapas79.easyterminal.gschema.xml:437
 msgid "Keyboard shortcut to reset and clear the terminal"
 msgstr "Scorciatoia da tastiera per ripristinare e pulire il terminale"
 
-#: src/io.github.andreapas79.easyterminal.gschema.xml:427
+#: src/io.github.andreapas79.easyterminal.gschema.xml:441
 msgid "Keyboard shortcut to open the search dialog"
 msgstr "Scorciatoia da tastiera per aprire il dialogo di ricerca"
 
-#: src/io.github.andreapas79.easyterminal.gschema.xml:431
+#: src/io.github.andreapas79.easyterminal.gschema.xml:445
 msgid "Keyboard shortcut to find the next occurrence of the search term"
-msgstr "Scorciatoia da tastiera per trovare l'occorrenza successiva del termine ricercato"
+msgstr ""
+"Scorciatoia da tastiera per trovare l'occorrenza successiva del termine "
+"ricercato"
 
-#: src/io.github.andreapas79.easyterminal.gschema.xml:435
+#: src/io.github.andreapas79.easyterminal.gschema.xml:449
 msgid "Keyboard shortcut to find the previous occurrence of the search term"
-msgstr "Scorciatoia da tastiera per trovare l'occorrenza precedente del termine ricercato"
+msgstr ""
+"Scorciatoia da tastiera per trovare l'occorrenza precedente del termine "
+"ricercato"
 
-#: src/io.github.andreapas79.easyterminal.gschema.xml:439
+#: src/io.github.andreapas79.easyterminal.gschema.xml:453
 msgid "Keyboard shortcut to clear the find highlighting"
-msgstr "Scorciatoia da tastiera per pulire l'evidenziazione dei risultati di ricerca"
+msgstr ""
+"Scorciatoia da tastiera per pulire l'evidenziazione dei risultati di ricerca"
 
-#: src/io.github.andreapas79.easyterminal.gschema.xml:443
+#: src/io.github.andreapas79.easyterminal.gschema.xml:457
 msgid "Keyboard shortcut to switch to the previous tab"
 msgstr "Scorciatoia da tastiera per spostarsi alla scheda precedente"
 
-#: src/io.github.andreapas79.easyterminal.gschema.xml:447
+#: src/io.github.andreapas79.easyterminal.gschema.xml:461
 msgid "Keyboard shortcut to switch to the next tab"
 msgstr "Scorciatoia da tastiera per spostarsi alla scheda successiva"
 
-#: src/io.github.andreapas79.easyterminal.gschema.xml:451
+#: src/io.github.andreapas79.easyterminal.gschema.xml:465
 msgid "Keyboard shortcut to move the current tab to the left"
 msgstr "Scorciatoia da tastiera per spostare la scheda attuale a sinistra"
 
-#: src/io.github.andreapas79.easyterminal.gschema.xml:455
+#: src/io.github.andreapas79.easyterminal.gschema.xml:469
 msgid "Keyboard shortcut to move the current tab to the right"
 msgstr "Scorciatoia da tastiera per spostare la scheda attuale a destra"
 
-#: src/io.github.andreapas79.easyterminal.gschema.xml:459
+#: src/io.github.andreapas79.easyterminal.gschema.xml:473
 msgid "Keyboard shortcut to detach current tab"
 msgstr "Scorciatoia da tastiera per staccare la scheda attuale"
 
-#: src/io.github.andreapas79.easyterminal.gschema.xml:463
-#: src/io.github.andreapas79.easyterminal.gschema.xml:467
-#: src/io.github.andreapas79.easyterminal.gschema.xml:471
-#: src/io.github.andreapas79.easyterminal.gschema.xml:475
-#: src/io.github.andreapas79.easyterminal.gschema.xml:479
-#: src/io.github.andreapas79.easyterminal.gschema.xml:483
-#: src/io.github.andreapas79.easyterminal.gschema.xml:487
-#: src/io.github.andreapas79.easyterminal.gschema.xml:491
-#: src/io.github.andreapas79.easyterminal.gschema.xml:495
-#: src/io.github.andreapas79.easyterminal.gschema.xml:499
-#: src/io.github.andreapas79.easyterminal.gschema.xml:503
-#: src/io.github.andreapas79.easyterminal.gschema.xml:507
-#: src/io.github.andreapas79.easyterminal.gschema.xml:511
-#: src/io.github.andreapas79.easyterminal.gschema.xml:515
-#: src/io.github.andreapas79.easyterminal.gschema.xml:519
-#: src/io.github.andreapas79.easyterminal.gschema.xml:523
-#: src/io.github.andreapas79.easyterminal.gschema.xml:527
-#: src/io.github.andreapas79.easyterminal.gschema.xml:531
-#: src/io.github.andreapas79.easyterminal.gschema.xml:535
-#: src/io.github.andreapas79.easyterminal.gschema.xml:539
-#: src/io.github.andreapas79.easyterminal.gschema.xml:543
-#: src/io.github.andreapas79.easyterminal.gschema.xml:547
-#: src/io.github.andreapas79.easyterminal.gschema.xml:551
-#: src/io.github.andreapas79.easyterminal.gschema.xml:555
-#: src/io.github.andreapas79.easyterminal.gschema.xml:559
-#: src/io.github.andreapas79.easyterminal.gschema.xml:563
-#: src/io.github.andreapas79.easyterminal.gschema.xml:567
-#: src/io.github.andreapas79.easyterminal.gschema.xml:571
-#: src/io.github.andreapas79.easyterminal.gschema.xml:575
-#: src/io.github.andreapas79.easyterminal.gschema.xml:579
-#: src/io.github.andreapas79.easyterminal.gschema.xml:583
-#: src/io.github.andreapas79.easyterminal.gschema.xml:587
-#: src/io.github.andreapas79.easyterminal.gschema.xml:591
-#: src/io.github.andreapas79.easyterminal.gschema.xml:595
-#: src/io.github.andreapas79.easyterminal.gschema.xml:599
+#: src/io.github.andreapas79.easyterminal.gschema.xml:477
+#: src/io.github.andreapas79.easyterminal.gschema.xml:481
+#: src/io.github.andreapas79.easyterminal.gschema.xml:485
+#: src/io.github.andreapas79.easyterminal.gschema.xml:489
+#: src/io.github.andreapas79.easyterminal.gschema.xml:493
+#: src/io.github.andreapas79.easyterminal.gschema.xml:497
+#: src/io.github.andreapas79.easyterminal.gschema.xml:501
+#: src/io.github.andreapas79.easyterminal.gschema.xml:505
+#: src/io.github.andreapas79.easyterminal.gschema.xml:509
+#: src/io.github.andreapas79.easyterminal.gschema.xml:513
+#: src/io.github.andreapas79.easyterminal.gschema.xml:517
+#: src/io.github.andreapas79.easyterminal.gschema.xml:521
+#: src/io.github.andreapas79.easyterminal.gschema.xml:525
+#: src/io.github.andreapas79.easyterminal.gschema.xml:529
+#: src/io.github.andreapas79.easyterminal.gschema.xml:533
+#: src/io.github.andreapas79.easyterminal.gschema.xml:537
+#: src/io.github.andreapas79.easyterminal.gschema.xml:541
+#: src/io.github.andreapas79.easyterminal.gschema.xml:545
+#: src/io.github.andreapas79.easyterminal.gschema.xml:549
+#: src/io.github.andreapas79.easyterminal.gschema.xml:553
+#: src/io.github.andreapas79.easyterminal.gschema.xml:557
+#: src/io.github.andreapas79.easyterminal.gschema.xml:561
+#: src/io.github.andreapas79.easyterminal.gschema.xml:565
+#: src/io.github.andreapas79.easyterminal.gschema.xml:569
+#: src/io.github.andreapas79.easyterminal.gschema.xml:573
+#: src/io.github.andreapas79.easyterminal.gschema.xml:577
+#: src/io.github.andreapas79.easyterminal.gschema.xml:581
+#: src/io.github.andreapas79.easyterminal.gschema.xml:585
+#: src/io.github.andreapas79.easyterminal.gschema.xml:589
+#: src/io.github.andreapas79.easyterminal.gschema.xml:593
+#: src/io.github.andreapas79.easyterminal.gschema.xml:597
+#: src/io.github.andreapas79.easyterminal.gschema.xml:601
+#: src/io.github.andreapas79.easyterminal.gschema.xml:605
+#: src/io.github.andreapas79.easyterminal.gschema.xml:609
+#: src/io.github.andreapas79.easyterminal.gschema.xml:613
 msgid "Keyboard shortcut to switch to the numbered tab"
 msgstr "Scorciatoia da tastiera per spostarsi alla scheda numerata"
 
-#: src/io.github.andreapas79.easyterminal.gschema.xml:603
+#: src/io.github.andreapas79.easyterminal.gschema.xml:617
 msgid "Keyboard shortcut to switch to the last tab"
 msgstr "Scorciatoia da tastiera per spostarsi all'ultima scheda"
 
-#: src/io.github.andreapas79.easyterminal.gschema.xml:607
+#: src/io.github.andreapas79.easyterminal.gschema.xml:621
 msgid "Keyboard shortcut to launch help"
 msgstr "Scorciatoia da tastiera per aprire la guida"
 
-#: src/io.github.andreapas79.easyterminal.gschema.xml:611
+#: src/io.github.andreapas79.easyterminal.gschema.xml:625
 msgid "Keyboard shortcut to make font larger"
 msgstr "Scorciatoia da tastiera per aumentare la dimensione del carattere"
 
-#: src/io.github.andreapas79.easyterminal.gschema.xml:615
+#: src/io.github.andreapas79.easyterminal.gschema.xml:629
 msgid "Keyboard shortcut to make font smaller"
 msgstr "Scorciatoia da tastiera per ridurre la dimensione del carattere"
 
-#: src/io.github.andreapas79.easyterminal.gschema.xml:619
+#: src/io.github.andreapas79.easyterminal.gschema.xml:633
 msgid "Keyboard shortcut to make font normal-size"
-msgstr "Scorciatoia da tastiera per impostare il carattere alla dimensione normale"
+msgstr ""
+"Scorciatoia da tastiera per impostare il carattere alla dimensione normale"
 
-#: src/io.github.andreapas79.easyterminal.gschema.xml:623
+#: src/io.github.andreapas79.easyterminal.gschema.xml:637
 msgid "Keyboard shortcut to show the primary menu"
 msgstr "Scorciatoia da tastiera per mostrare il menù primario"
 
-#: src/io.github.andreapas79.easyterminal.gschema.xml:633
+#: src/io.github.andreapas79.easyterminal.gschema.xml:647
 msgid "Whether the menubar has access keys"
 msgstr "Indica se la la barra dei menù ha tasti acceleratori"
 
-#: src/io.github.andreapas79.easyterminal.gschema.xml:634
-msgid "Whether to have Alt+letter access keys for the menubar. They may interfere with some applications run inside the terminal so it’s possible to turn them off."
-msgstr "Indica se si hanno le scorciatoie Alt+lettera per la barra dei menù. Questo potrebbe interferire con alcune applicazioni che girano all'interno del terminale così è possibile disabilitarle."
+#: src/io.github.andreapas79.easyterminal.gschema.xml:648
+msgid ""
+"Whether to have Alt+letter access keys for the menubar. They may interfere "
+"with some applications run inside the terminal so it’s possible to turn them "
+"off."
+msgstr ""
+"Indica se si hanno le scorciatoie Alt+lettera per la barra dei menù. Questo "
+"potrebbe interferire con alcune applicazioni che girano all'interno del "
+"terminale così è possibile disabilitarle."
 
-#: src/io.github.andreapas79.easyterminal.gschema.xml:643
+#: src/io.github.andreapas79.easyterminal.gschema.xml:657
 msgid "Whether shortcuts are enabled"
 msgstr "Indica se le scorciatoie sono abilitate"
 
-#: src/io.github.andreapas79.easyterminal.gschema.xml:644
-msgid "Whether shortcuts are enabled. They may interfere with some applications run inside the terminal so it’s possible to turn them off."
-msgstr "Indica se le scorciatoie sono abilitate. Questo potrebbe interferire con alcune applicazioni che girano all'interno del terminale così è possibile disabilitarle."
+#: src/io.github.andreapas79.easyterminal.gschema.xml:658
+msgid ""
+"Whether shortcuts are enabled. They may interfere with some applications run "
+"inside the terminal so it’s possible to turn them off."
+msgstr ""
+"Indica se le scorciatoie sono abilitate. Questo potrebbe interferire con "
+"alcune applicazioni che girano all'interno del terminale così è possibile "
+"disabilitarle."
 
-#: src/io.github.andreapas79.easyterminal.gschema.xml:653
+#: src/io.github.andreapas79.easyterminal.gschema.xml:667
 msgid "Whether the standard GTK shortcut for menubar access is enabled"
-msgstr "Indica se la scorciatoia predefinita di GTK per accedere alla barra dei menù è abilitata"
+msgstr ""
+"Indica se la scorciatoia predefinita di GTK per accedere alla barra dei menù "
+"è abilitata"
 
-#: src/io.github.andreapas79.easyterminal.gschema.xml:654
-msgid "Normally you can access the menubar with F10. This can also be customized via gtkrc (gtk-menu-bar-accel = \"whatever\"). This option allows the standard menubar accelerator to be disabled."
-msgstr "Normalmente è possibile accedere alla barra dei menù con F10. Questo può essere personalizzato attraverso gtkrc (gtk-menu-bar-accel = \"qualcosa\"). Questa opzione permette di disabilitare l'acceleratore predefinito per la barra dei menù."
+#: src/io.github.andreapas79.easyterminal.gschema.xml:668
+msgid ""
+"Normally you can access the menubar with F10. This can also be customized "
+"via gtkrc (gtk-menu-bar-accel = \"whatever\"). This option allows the "
+"standard menubar accelerator to be disabled."
+msgstr ""
+"Normalmente è possibile accedere alla barra dei menù con F10. Questo può "
+"essere personalizzato attraverso gtkrc (gtk-menu-bar-accel = \"qualcosa\"). "
+"Questa opzione permette di disabilitare l'acceleratore predefinito per la "
+"barra dei menù."
 
-#: src/io.github.andreapas79.easyterminal.gschema.xml:664
+#: src/io.github.andreapas79.easyterminal.gschema.xml:678
 msgid "Whether the shell integration is enabled"
 msgstr "Indica se l'integrazione della shell è abilitata"
 
-#: src/io.github.andreapas79.easyterminal.gschema.xml:669
+#: src/io.github.andreapas79.easyterminal.gschema.xml:683
 msgid "Whether to ask for confirmation before closing a terminal"
 msgstr "Indica se chiedere conferma prima che vengano chiusi i terminali"
 
-#: src/io.github.andreapas79.easyterminal.gschema.xml:674
+#: src/io.github.andreapas79.easyterminal.gschema.xml:688
 msgid "Additional info section items to appear in the context menu"
-msgstr "Elementi della sezione informazioni aggiuntive da mostrare nel menù contestuale"
+msgstr ""
+"Elementi della sezione informazioni aggiuntive da mostrare nel menù "
+"contestuale"
 
-#: src/io.github.andreapas79.easyterminal.gschema.xml:679
+#: src/io.github.andreapas79.easyterminal.gschema.xml:693
 msgid "Whether to show the menubar in new windows"
 msgstr "Indica se mostrare la barra dei menù nelle nuove finestre"
 
-#: src/io.github.andreapas79.easyterminal.gschema.xml:684
+#: src/io.github.andreapas79.easyterminal.gschema.xml:698
 msgid "Whether to open new terminals as windows or tabs"
 msgstr "Indica se aprire i nuovi terminali come finestre o schede"
 
-#: src/io.github.andreapas79.easyterminal.gschema.xml:689
+#: src/io.github.andreapas79.easyterminal.gschema.xml:703
 msgid "When to show the tabs bar"
 msgstr "Quando mostrare la barra delle schede"
 
-#: src/io.github.andreapas79.easyterminal.gschema.xml:694
+#: src/io.github.andreapas79.easyterminal.gschema.xml:708
 msgid "The position of the tab bar"
 msgstr "La posizione della barra delle schede"
 
-#: src/io.github.andreapas79.easyterminal.gschema.xml:699
+#: src/io.github.andreapas79.easyterminal.gschema.xml:713
 msgid "Which theme variant to use"
 msgstr "Quale variante del tema usare"
 
-#: src/io.github.andreapas79.easyterminal.gschema.xml:704
-msgid "Whether new tabs should open next to the current one or at the last position"
-msgstr "Indica se le nuove schede devono aprirsi accanto a quella attuale o all'ultima posizione"
+#: src/io.github.andreapas79.easyterminal.gschema.xml:718
+msgid ""
+"Whether new tabs should open next to the current one or at the last position"
+msgstr ""
+"Indica se le nuove schede devono aprirsi accanto a quella attuale o "
+"all'ultima posizione"
 
 #. Open new terminal in new window
 #: src/preferences.ui:14
@@ -756,425 +917,442 @@ msgid "Wide"
 msgstr "Estesi"
 
 #. Cursor shape
-#: src/preferences.ui:123
+#: src/preferences.ui:128
 msgid "Block"
 msgstr "Blocco"
 
 #. Cursor shape
-#: src/preferences.ui:126
+#: src/preferences.ui:131
 msgid "I-Beam"
 msgstr "Trattino verticale"
 
 #. Cursor shape
-#: src/preferences.ui:129
+#: src/preferences.ui:134
 msgid "Underline"
 msgstr "Trattino basso"
 
 #. Cursor blink mode
-#: src/preferences.ui:140
+#: src/preferences.ui:145
 msgid "Default"
 msgstr "Predefinito"
 
 #. Cursor blink mode
-#: src/preferences.ui:143
+#: src/preferences.ui:148
 msgid "Enabled"
 msgstr "Abilitato"
 
 #. Cursor blink mode
-#: src/preferences.ui:146
+#: src/preferences.ui:151
 msgid "Disabled"
 msgstr "Disabilitato"
 
 #. Text blink mode
 #. Preserve working directory
-#: src/preferences.ui:157 src/preferences.ui:268
+#: src/preferences.ui:162 src/preferences.ui:273
 msgid "Never"
 msgstr "Mai"
 
 #. Text blink mode
-#: src/preferences.ui:160
+#: src/preferences.ui:165
 msgid "When focused"
 msgstr "Quando ha il focus"
 
 #. Text blink mode
-#: src/preferences.ui:163
+#: src/preferences.ui:168
 msgid "When unfocused"
 msgstr "Quando non ha il focus"
 
 #. Text blink mode
 #. Preserve working directory
-#: src/preferences.ui:166 src/preferences.ui:276
+#: src/preferences.ui:171 src/preferences.ui:281
 msgid "Always"
 msgstr "Sempre"
 
 #. When terminal commands set their own titles
-#: src/preferences.ui:177
+#: src/preferences.ui:182
 msgid "Replace initial title"
 msgstr "Sostituire il titolo iniziale"
 
 #. When terminal commands set their own titles
-#: src/preferences.ui:180
+#: src/preferences.ui:185
 msgid "Append initial title"
 msgstr "Aggiungere dopo il titolo iniziale"
 
 #. When terminal commands set their own titles
-#: src/preferences.ui:183
+#: src/preferences.ui:188
 msgid "Prepend initial title"
 msgstr "Aggiungere prima del titolo iniziale"
 
 #. When terminal commands set their own titles
-#: src/preferences.ui:186
+#: src/preferences.ui:191
 msgid "Keep initial title"
 msgstr "Mantenere il titolo iniziale"
 
 #. When command exits
-#: src/preferences.ui:197
+#: src/preferences.ui:202
 msgid "Exit the terminal"
 msgstr "Chiudere il terminale"
 
 #. When command exits
-#: src/preferences.ui:200
+#: src/preferences.ui:205
 msgid "Restart the command"
 msgstr "Riavviare il comando"
 
 #. When command exits
-#: src/preferences.ui:203
+#: src/preferences.ui:208
 msgid "Hold the terminal open"
 msgstr "Mantenere aperto il terminale"
 
 #. This is the name of a colour scheme
-#: src/preferences.ui:217
+#: src/preferences.ui:222
 msgid "Tango"
 msgstr "Tango"
 
 #. This is the name of a colour scheme
-#: src/preferences.ui:220
+#: src/preferences.ui:225
 msgid "Linux console"
 msgstr "Console Linux"
 
 #. This is the name of a colour scheme
-#: src/preferences.ui:223
+#: src/preferences.ui:228
 msgid "XTerm"
 msgstr "XTerm"
 
 #. This is the name of a colour scheme
-#: src/preferences.ui:226
+#: src/preferences.ui:231
 msgid "Rxvt"
 msgstr "Rxvt"
 
 #. This is the name of a colour scheme
-#: src/preferences.ui:229
+#: src/preferences.ui:234
 msgid "Solarized"
 msgstr "Solarized"
 
 #. This is the name of a colour scheme
-#: src/preferences.ui:232 src/profile-editor.cc:719
+#: src/preferences.ui:237 src/profile-editor.cc:719
 msgid "Custom"
 msgstr "Personalizzato"
 
 #. This refers to the Delete keybinding option
-#: src/preferences.ui:243
+#: src/preferences.ui:248
 msgid "Automatic"
 msgstr "Automatico"
 
 #. This refers to the Delete keybinding option
-#: src/preferences.ui:246
+#: src/preferences.ui:251
 msgid "Control-H"
 msgstr "Control-H"
 
 #. This refers to the Delete keybinding option
-#: src/preferences.ui:249
+#: src/preferences.ui:254
 msgid "ASCII DEL"
 msgstr "ASCII DEL"
 
 #. This refers to the Delete keybinding option
-#: src/preferences.ui:252
+#: src/preferences.ui:257
 msgid "Escape sequence"
 msgstr "Sequenza di escape"
 
 #. This refers to the Delete keybinding option
-#: src/preferences.ui:255
+#: src/preferences.ui:260
 msgid "TTY Erase"
 msgstr "Cancella TTY"
 
 #. Preserve working directory
-#: src/preferences.ui:272
+#: src/preferences.ui:277
 msgid "Shell only"
 msgstr "Solo shell"
 
-#: src/preferences.ui:340
+#: src/preferences.ui:345
 msgid "_Show menubar by default in new terminals"
 msgstr "_Mostrare la barra dei menù in maniera predefinita nei nuovi terminali"
 
-#: src/preferences.ui:356
+#: src/preferences.ui:361
 msgid "_Enable mnemonics (such as Alt+F to open the File menu)"
 msgstr "_Abilitare gli acceleratori (come Alt+F per aprire il menù File)"
 
-#: src/preferences.ui:373
+#: src/preferences.ui:378
 msgid "Enable the _menu accelerator key (F10 by default)"
-msgstr "A_bilitare il tasto acceleratore per i menù (il tasto predefinito è F10)"
+msgstr ""
+"A_bilitare il tasto acceleratore per i menù (il tasto predefinito è F10)"
 
-#: src/preferences.ui:398
+#: src/preferences.ui:403
 msgid "Theme _variant:"
 msgstr "_Variante del tema:"
 
-#: src/preferences.ui:430
+#: src/preferences.ui:435
 msgid "Open _new terminals in:"
 msgstr "Aprire i _nuovi terminali in:"
 
-#: src/preferences.ui:462
+#: src/preferences.ui:467
 msgid "New tab _position:"
 msgstr "_Posizione della nuova scheda:"
 
-#: src/preferences.ui:523
+#: src/preferences.ui:528
 msgid "_Enable shortcuts"
 msgstr "A_bilita le scorciatoie"
 
-#: src/preferences.ui:589
+#: src/preferences.ui:594
 msgid "Text Appearance"
 msgstr "Aspetto del testo"
 
-#: src/preferences.ui:606
+#: src/preferences.ui:611
 msgid "Initial terminal si_ze:"
 msgstr "Dimensione ini_ziale del terminale:"
 
-#: src/preferences.ui:639
+#: src/preferences.ui:644
 msgid "columns"
 msgstr "colonne"
 
-#: src/preferences.ui:676
+#: src/preferences.ui:681
 msgid "rows"
 msgstr "righe"
 
-#: src/preferences.ui:697 src/preferences.ui:843
+#: src/preferences.ui:702 src/preferences.ui:848
 msgid "Rese_t"
 msgstr "Ripris_tina"
 
-#: src/preferences.ui:718
+#: src/preferences.ui:723
 msgid "Custom _font:"
 msgstr "Carattere _personalizzato:"
 
-#: src/preferences.ui:739
+#: src/preferences.ui:744
 msgid "Choose A Terminal Font"
 msgstr "Scegliere un carattere"
 
-#: src/preferences.ui:752
+#: src/preferences.ui:757
 msgid "Cell spaci_ng:"
 msgstr "Spa_ziatura cella:"
 
-#: src/preferences.ui:867
+#: src/preferences.ui:872
 msgid "Allow b_linking text:"
 msgstr "Consentire testo _lampeggiante:"
 
-#: src/preferences.ui:901
+#: src/preferences.ui:906
 msgid "Cursor"
 msgstr "Cursore"
 
-#: src/preferences.ui:918
+#: src/preferences.ui:923
 msgid "Cursor _shape:"
 msgstr "_Forma del cursore:"
 
-#: src/preferences.ui:952
+#: src/preferences.ui:957
 msgid "Cursor blin_king:"
 msgstr "Cursore lampe_ggiante:"
 
-#: src/preferences.ui:986
+#: src/preferences.ui:991
 msgid "Sound"
 msgstr "Suono"
 
-#: src/preferences.ui:1000
+#: src/preferences.ui:1005
 msgid "Terminal _bell"
 msgstr "Avviso acust_ico"
 
-#: src/preferences.ui:1026
+#: src/preferences.ui:1031
 msgid "Profile ID:"
 msgstr "ID profilo"
 
-#: src/preferences.ui:1066 src/preferences.ui:1183
+#: src/preferences.ui:1071 src/preferences.ui:1188
 msgid "Text"
 msgstr "Testo"
 
-#: src/preferences.ui:1089
+#: src/preferences.ui:1094
 msgid "Text and Background Color"
 msgstr "Colore dello sfondo e del testo"
 
-#: src/preferences.ui:1113
+#: src/preferences.ui:1118
 msgid "_Use colors from system theme"
 msgstr "Usare i colori del te_ma di sistema"
 
-#: src/preferences.ui:1142
+#: src/preferences.ui:1147
 msgid "Built-in sche_mes:"
 msgstr "Schemi i_ncorporati:"
 
-#: src/preferences.ui:1195
+#: src/preferences.ui:1200
 msgid "Background"
 msgstr "Sfondo"
 
-#: src/preferences.ui:1208
+#: src/preferences.ui:1213
 msgid "_Default color:"
 msgstr "Colore _predefinito:"
 
-#: src/preferences.ui:1225
+#: src/preferences.ui:1230
 msgid "Choose Terminal Text Color"
 msgstr "Scelta colore del testo del terminale"
 
-#: src/preferences.ui:1239
+#: src/preferences.ui:1244
 msgid "Choose Terminal Background Color"
 msgstr "Scelta colore dello sfondo del terminale"
 
-#: src/preferences.ui:1249
+#: src/preferences.ui:1254
 msgid "Bo_ld color:"
 msgstr "Colore _grassetto:"
 
-#: src/preferences.ui:1269
+#: src/preferences.ui:1274
 msgid "Choose Terminal Bold Text Color"
 msgstr "Scelta colore del testo in grassetto del terminale"
 
-#: src/preferences.ui:1279
+#: src/preferences.ui:1284
 msgid "_Underline color:"
 msgstr "Colore so_ttolineato:"
 
-#: src/preferences.ui:1297
+#: src/preferences.ui:1302
 msgid "Choose Terminal Underlined Text Color"
 msgstr "Scelta colore del testo sottolineato del terminale"
 
-#: src/preferences.ui:1306
+#: src/preferences.ui:1311
 msgid "Cu_rsor color:"
 msgstr "Colore del cu_rsore:"
 
-#: src/preferences.ui:1326
+#: src/preferences.ui:1331
 msgid "Choose Terminal Cursor Foreground Color"
 msgstr "Scelta colore del primo piano del cursore del terminale"
 
-#: src/preferences.ui:1340
+#: src/preferences.ui:1345
 msgid "Choose Terminal Cursor Background Color"
 msgstr "Scelta colore dello sfondo del cursore del terminale"
 
-#: src/preferences.ui:1350
+#: src/preferences.ui:1355
 msgid "_Highlight color:"
 msgstr "Colore _evidenziazione:"
 
-#: src/preferences.ui:1369
+#: src/preferences.ui:1374
 msgid "Choose Terminal Highlight Foreground Color"
 msgstr "Scelta colore del primo piano di evidenziazione del terminale"
 
-#: src/preferences.ui:1383
+#: src/preferences.ui:1388
 msgid "Choose Terminal Highlight Background Color"
 msgstr "Scelta colore dello sfondo di evidenziazione del terminale"
 
-#: src/preferences.ui:1430
+#: src/preferences.ui:1418
+msgid "Use t_ransparent background"
+msgstr "Usare sfondo t_rasparente"
+
+#: src/preferences.ui:1443
+msgid "none"
+msgstr "nessuna"
+
+#: src/preferences.ui:1472
+msgid "full"
+msgstr "piena"
+
+#: src/preferences.ui:1505
+msgid "Use transparency from system theme"
+msgstr "Usare la trasparenza dal tema di sistema"
+
+#: src/preferences.ui:1551
 msgid "Palette"
 msgstr "Tavolozza"
 
-#: src/preferences.ui:1462
+#: src/preferences.ui:1583
 msgid "Built-in _schemes:"
 msgstr "_Schemi incorporati:"
 
-#: src/preferences.ui:1495
+#: src/preferences.ui:1616
 msgid "Color p_alette:"
 msgstr "Tavolo_zza dei colori:"
 
-#: src/preferences.ui:1736
+#: src/preferences.ui:1857
 msgid "Show _bold text in bright colors"
 msgstr "Mostrare il testo in _grassetto con colori molto chiari"
 
-#: src/preferences.ui:1775
+#: src/preferences.ui:1896
 msgid "Colors"
 msgstr "Colori"
 
-#: src/preferences.ui:1793
+#: src/preferences.ui:1914
 msgid "_Show scrollbar"
 msgstr "Mo_stra barra di scorrimento"
 
-#: src/preferences.ui:1810
+#: src/preferences.ui:1931
 msgid "Scroll on _output"
 msgstr "Sco_rrere in presenza di output"
 
-#: src/preferences.ui:1827
+#: src/preferences.ui:1948
 msgid "Scroll on _keystroke"
 msgstr "S_correre alla pressione dei tasti"
 
-#: src/preferences.ui:1844
+#: src/preferences.ui:1965
 msgid "_Limit scrollback to:"
 msgstr "_Limita lo scorrimento all'indietro a:"
 
-#: src/preferences.ui:1882
+#: src/preferences.ui:2003
 msgid "lines"
 msgstr "righe"
 
-#: src/preferences.ui:1908
+#: src/preferences.ui:2029
 msgid "Scrolling"
 msgstr "Scorrimento"
 
-#: src/preferences.ui:1925
+#: src/preferences.ui:2046
 msgid "_Run command as a login shell"
 msgstr "_Eseguire il comando come una shell di login"
 
-#: src/preferences.ui:1940
+#: src/preferences.ui:2061
 msgid "Ru_n a custom command instead of my shell"
 msgstr "Ese_guire un comando personalizzato invece della shell"
 
-#: src/preferences.ui:1957
+#: src/preferences.ui:2078
 msgid "Custom co_mmand:"
 msgstr "Co_mando personalizzato:"
 
-#: src/preferences.ui:1983
+#: src/preferences.ui:2104
 msgid "_Preserve working directory:"
 msgstr "_Preservare la directory di lavoro:"
 
-#: src/preferences.ui:2017
+#: src/preferences.ui:2138
 msgid "When command _exits:"
 msgstr "_Quando il comando termina:"
 
-#: src/preferences.ui:2055
+#: src/preferences.ui:2176
 msgid "Command"
 msgstr "Comando"
 
-#: src/preferences.ui:2075
+#: src/preferences.ui:2196
 msgid "_Backspace key generates:"
 msgstr "Il tasto _Backspace genera:"
 
-#: src/preferences.ui:2108
+#: src/preferences.ui:2229
 msgid "_Delete key generates:"
 msgstr "Il tasto _Canc genera:"
 
-#: src/preferences.ui:2141
+#: src/preferences.ui:2262
 msgid "_Encoding:"
 msgstr "C_odifica:"
 
-#: src/preferences.ui:2173
+#: src/preferences.ui:2294
 msgid "Ambiguous-_width characters:"
 msgstr "Caratteri a larghezza ambigua:"
 
-#: src/preferences.ui:2205
+#: src/preferences.ui:2326
 msgid "Enable _SIXEL images"
 msgstr "Abilitare le immagini _SIXEL"
 
-#: src/preferences.ui:2221
+#: src/preferences.ui:2342
 msgid "_Reset Compatibility Options to Defaults"
 msgstr "_Ripristinare valori predefiniti per opzioni di compatibilità"
 
-#: src/preferences.ui:2244
+#: src/preferences.ui:2365
 msgid "Compatibility"
 msgstr "Compatibilità"
 
-#: src/preferences.ui:2323
+#: src/preferences.ui:2444
 msgid "Clone…"
 msgstr "Clona…"
 
-#: src/preferences.ui:2330
+#: src/preferences.ui:2451
 msgid "Rename…"
 msgstr "Rinomina…"
 
-#: src/preferences.ui:2337
+#: src/preferences.ui:2458
 msgid "Delete…"
 msgstr "Elimina…"
 
-#: src/preferences.ui:2350
+#: src/preferences.ui:2471
 msgid "Set as default"
 msgstr "Impostare come predefinito"
 
-#: src/preferences.ui:2414
+#: src/preferences.ui:2535
 msgid "Cancel"
 msgstr "Annulla"
 
@@ -1408,8 +1586,8 @@ msgid "_Wrap around"
 msgstr "_Ricominciare dall'inizio"
 
 #: src/server.cc:152 src/terminal-accels.cc:232 src/terminal-menubar.ui.in:144
-#: src/terminal-tab-label.cc:87 src/terminal-window.cc:2148
-#: src/terminal-window.cc:2422 src/terminal-window.cc:2705 src/terminal.cc:570
+#: src/terminal-tab-label.cc:86 src/terminal-window.cc:2172
+#: src/terminal-window.cc:2480 src/terminal-window.cc:2765 src/terminal.cc:570
 msgid "Terminal"
 msgstr "Terminale"
 
@@ -1574,17 +1752,17 @@ msgstr "Tasto s_corciatoia"
 msgid "New Terminal"
 msgstr "Nuovo terminale"
 
-#: src/terminal-app.cc:518 src/terminal-window.cc:2049
+#: src/terminal-app.cc:518 src/terminal-window.cc:2073
 msgid "New _Terminal"
 msgstr "Nuovo _terminale"
 
 #: src/terminal-app.cc:520 src/terminal-notebook-menu.ui:23
-#: src/terminal-window.cc:2058
+#: src/terminal-window.cc:2082
 msgid "New _Tab"
 msgstr "Nuova _scheda"
 
 #: src/terminal-app.cc:521 src/terminal-headermenu.ui:39
-#: src/terminal-window.cc:2054
+#: src/terminal-window.cc:2078
 msgid "New _Window"
 msgstr "Nuova _finestra"
 
@@ -1609,7 +1787,7 @@ msgid "_Full Screen"
 msgstr "Scher_mo intero"
 
 #: src/terminal-headermenu.ui:50 src/terminal-menubar.ui.in:150
-#: src/terminal-window.cc:2030
+#: src/terminal-window.cc:2054
 msgid "Read-_Only"
 msgstr "S_ola lettura"
 
@@ -1645,8 +1823,8 @@ msgstr "_4. 132×43"
 msgid "_Inspector"
 msgstr "_Ispettore"
 
-#: src/terminal-headermenu.ui:101 src/terminal-screen.cc:1556
-#: src/terminal-window.cc:2042
+#: src/terminal-headermenu.ui:101 src/terminal-screen.cc:1746
+#: src/terminal-window.cc:2066
 msgid "_Preferences"
 msgstr "_Preferenze"
 
@@ -1661,6 +1839,10 @@ msgstr "I_nformazioni"
 #: src/terminal-name-dialog.cc:74 src/terminal-window.cc:497
 msgid "_Cancel"
 msgstr "A_nnulla"
+
+#: src/terminal-name-dialog.cc:75
+msgid "_OK"
+msgstr "_OK"
 
 #: src/terminal-menubar.ui.in:21
 msgid "_File"
@@ -1690,19 +1872,19 @@ msgstr "_Chiudi finestra"
 msgid "_Edit"
 msgstr "_Modifica"
 
-#: src/terminal-menubar.ui.in:59 src/terminal-window.cc:2020
+#: src/terminal-menubar.ui.in:59 src/terminal-window.cc:2044
 msgid "_Copy"
 msgstr "_Copia"
 
-#: src/terminal-menubar.ui.in:64 src/terminal-window.cc:2021
+#: src/terminal-menubar.ui.in:64 src/terminal-window.cc:2045
 msgid "Copy as _HTML"
 msgstr "Copia come _HTML"
 
-#: src/terminal-menubar.ui.in:69 src/terminal-window.cc:2022
+#: src/terminal-menubar.ui.in:69 src/terminal-window.cc:2046
 msgid "_Paste"
 msgstr "_Incolla"
 
-#: src/terminal-menubar.ui.in:73 src/terminal-window.cc:2024
+#: src/terminal-menubar.ui.in:73 src/terminal-window.cc:2048
 msgid "Paste as _Filenames"
 msgstr "Incolla come nome _file"
 
@@ -1718,7 +1900,7 @@ msgstr "P_referenze"
 msgid "_View"
 msgstr "_Visualizza"
 
-#: src/terminal-menubar.ui.in:96 src/terminal-window.cc:2070
+#: src/terminal-menubar.ui.in:96 src/terminal-window.cc:2094
 msgid "Show _Menubar"
 msgstr "_Mostra barra dei menù"
 
@@ -1806,15 +1988,38 @@ msgstr "Apri _terminale"
 msgid "Open a terminal"
 msgstr "Apre un terminale"
 
-#: src/terminal-notebook-menu.ui:50 src/terminal-window.cc:3583
+#: src/terminal-notebook-menu.ui:28
+msgid "Re_name Tab…"
+msgstr "Ri_nomina scheda…"
+
+#: src/terminal-notebook-menu.ui:50 src/terminal-window.cc:3647
 msgid "C_lose Terminal"
 msgstr "Chiudi _terminale"
+
+#: src/terminal-options.cc:307
+#, c-format
+msgid ""
+"Option “%s” is deprecated and might be removed in a later version of "
+"easyterminal."
+msgstr ""
+"L'opzione «%s» è deprecata e potrebbe essere rimossa in una futura versione "
+"di easyterminal."
 
 #. %s is being replaced with "-- " (without quotes), which must be used literally, not translatable
 #: src/terminal-options.cc:318
 #, c-format
-msgid "Use “%s” to terminate the options and put the command line to execute after it."
-msgstr "Usare «%s» per terminare le opzioni e mettere la riga di comando da eseguire dopo di esso."
+msgid ""
+"Use “%s” to terminate the options and put the command line to execute after "
+"it."
+msgstr ""
+"Usare «%s» per terminare le opzioni e mettere la riga di comando da eseguire "
+"dopo di esso."
+
+#: src/terminal-options.cc:328 src/terminal-options.cc:341
+#, c-format
+msgid "Option “%s” is no longer supported in this version of easyterminal."
+msgstr ""
+"L'opzione «%s» non è più disponibile in questa versione di easyterminal."
 
 #: src/terminal-options.cc:413
 #, c-format
@@ -1852,8 +2057,12 @@ msgstr "Il fattore di ingrandimento «%g» è troppo alto, verrà usato %g\n"
 
 #: src/terminal-options.cc:974
 #, c-format
-msgid "Option “%s” requires specifying the command to run on the rest of the command line"
-msgstr "L'opzione «%s» richiede di specificare un comando da eseguire sul resto della riga di comando"
+msgid ""
+"Option “%s” requires specifying the command to run on the rest of the "
+"command line"
+msgstr ""
+"L'opzione «%s» richiede di specificare un comando da eseguire sul resto "
+"della riga di comando"
 
 #: src/terminal-options.cc:1127
 msgid "Can only use --wait once"
@@ -1868,8 +2077,11 @@ msgid "Incompatible terminal config file version."
 msgstr "Versione del file di configurazione del terminale non compatibile."
 
 #: src/terminal-options.cc:1330
-msgid "Do not register with the activation nameserver, do not re-use an active terminal"
-msgstr "Non registra con l'activation nameserver, non utilizza un terminale attivo"
+msgid ""
+"Do not register with the activation nameserver, do not re-use an active "
+"terminal"
+msgstr ""
+"Non registra con l'activation nameserver, non utilizza un terminale attivo"
 
 #: src/terminal-options.cc:1339
 msgid "Load a terminal configuration file"
@@ -1905,7 +2117,8 @@ msgstr "Apre una scheda in una nuova finestra con il profilo predefinito"
 
 #: src/terminal-options.cc:1423
 msgid "Open a new tab in the last-opened window with the default profile"
-msgstr "Apre una nuova scheda nell'ultima finestra aperta con il profilo predefinito"
+msgstr ""
+"Apre una nuova scheda nell'ultima finestra aperta con il profilo predefinito"
 
 #: src/terminal-options.cc:1436
 msgid "Turn on the menubar"
@@ -1924,8 +2137,11 @@ msgid "Full-screen the window"
 msgstr "Porta la finestra a schermo intero"
 
 #: src/terminal-options.cc:1472
-msgid "Set the window size; for example: 80x24, or 80x24+200+200 (COLSxROWS+X+Y)"
-msgstr "Imposta la dimensione della finestra; ad esempio: 80x24 o 80x24+200+200 (COLONNExRIGHE+X+Y)"
+msgid ""
+"Set the window size; for example: 80x24, or 80x24+200+200 (COLSxROWS+X+Y)"
+msgstr ""
+"Imposta la dimensione della finestra; ad esempio: 80x24 o 80x24+200+200 "
+"(COLONNExRIGHE+X+Y)"
 
 #: src/terminal-options.cc:1473
 msgid "GEOMETRY"
@@ -1986,7 +2202,8 @@ msgstr "DF"
 
 #: src/terminal-options.cc:1558
 msgid "Set the terminal’s zoom factor (1.0 = normal size)"
-msgstr "Imposta il fattore d'ingrandimento del terminale (1.0 = dimensione normale)"
+msgstr ""
+"Imposta il fattore d'ingrandimento del terminale (1.0 = dimensione normale)"
 
 #: src/terminal-options.cc:1559
 msgid "ZOOM"
@@ -1996,25 +2213,45 @@ msgstr "INGRANDIMENTO"
 msgid "COMMAND"
 msgstr "COMANDO"
 
+#: src/terminal-options.cc:1654
+msgid "EasyTerminal Emulator"
+msgstr "Emulatore di terminale EasyTerminal"
+
+#: src/terminal-options.cc:1655
+msgid "Show EasyTerminal options"
+msgstr "Mostra le opzioni di EasyTerminal"
+
 #: src/terminal-options.cc:1665
-msgid "Options to open new windows or terminal tabs; more than one of these may be specified:"
-msgstr "Opzioni per aprire nuove finestre o schede di terminale. È possibile specificarne più di una:"
+msgid ""
+"Options to open new windows or terminal tabs; more than one of these may be "
+"specified:"
+msgstr ""
+"Opzioni per aprire nuove finestre o schede di terminale. È possibile "
+"specificarne più di una:"
 
 #: src/terminal-options.cc:1666
 msgid "Show terminal options"
 msgstr "Mostra le opzioni del terminale"
 
 #: src/terminal-options.cc:1674
-msgid "Window options; if used before the first --window or --tab argument, sets the default for all windows:"
-msgstr "Opzioni della finestra. Se usato prima dell'argomento --window o --tab, imposta i valori predefiniti per tutte le finestre:"
+msgid ""
+"Window options; if used before the first --window or --tab argument, sets "
+"the default for all windows:"
+msgstr ""
+"Opzioni della finestra. Se usato prima dell'argomento --window o --tab, "
+"imposta i valori predefiniti per tutte le finestre:"
 
 #: src/terminal-options.cc:1675
 msgid "Show per-window options"
 msgstr "Mostra le opzioni per ogni finestra"
 
 #: src/terminal-options.cc:1683
-msgid "Terminal options; if used before the first --window or --tab argument, sets the default for all terminals:"
-msgstr "Opzioni del terminale. Se usato prima dell'argomento --window o --tab, imposta i valori predefiniti per tutti i terminali:"
+msgid ""
+"Terminal options; if used before the first --window or --tab argument, sets "
+"the default for all terminals:"
+msgstr ""
+"Opzioni del terminale. Se usato prima dell'argomento --window o --tab, "
+"imposta i valori predefiniti per tutti i terminali:"
 
 #: src/terminal-options.cc:1684
 msgid "Show per-terminal options"
@@ -2102,33 +2339,41 @@ msgstr "Scorciatoie"
 msgid "Profiles"
 msgstr "Profili"
 
-#: src/terminal-screen.cc:1441
+#: src/terminal-screen.cc:1631
 msgid "No command supplied nor shell requested"
 msgstr "Non è stato fornito alcun comando nè richiesta di shell"
 
-#: src/terminal-screen.cc:1557 src/terminal-screen.cc:1904
+#: src/terminal-screen.cc:1747 src/terminal-screen.cc:2110
 msgid "_Relaunch"
 msgstr "_Riavvia"
 
-#: src/terminal-screen.cc:1560
+#: src/terminal-screen.cc:1750
 msgid "There was an error creating the child process for this terminal"
 msgstr "Errore nel creare il processo figlio per questo terminale"
 
-#: src/terminal-screen.cc:1908
+#: src/terminal-screen.cc:2114
 #, c-format
 msgid "The child process exited normally with status %d."
 msgstr "Il processo figlio si è concluso normalmente con lo stato %d."
 
-#: src/terminal-screen.cc:1911
+#: src/terminal-screen.cc:2117
 #, c-format
 msgid "The child process was aborted by signal %d."
 msgstr "Il processo figlio è stato interrotto dal segnale %d."
 
-#: src/terminal-screen.cc:1914
+#: src/terminal-screen.cc:2120
 msgid "The child process was aborted."
 msgstr "Il processo figlio è stato interrotto."
 
-#: src/terminal-tab-label.cc:213
+#: src/terminal-tab-group.cc:485
+msgid "Click to expand the group"
+msgstr "Clic per espandere il gruppo"
+
+#: src/terminal-tab-group.cc:488
+msgid "Click to collapse the group"
+msgstr "Clic per comprimere il gruppo"
+
+#: src/terminal-tab-label.cc:210
 msgid "Close tab"
 msgstr "Chiude la scheda"
 
@@ -2136,25 +2381,25 @@ msgstr "Chiude la scheda"
 msgid "There was an error displaying help"
 msgstr "Errore nel mostrare l'aiuto"
 
-#: src/terminal-util.cc:209
+#: src/terminal-util.cc:210
 msgid "Contributors:"
 msgstr "Contributi da:"
 
-#: src/terminal-util.cc:230
+#: src/terminal-util.cc:231
 #, c-format
 msgid "Version %s, based on GNOME Terminal %s for GNOME %d"
 msgstr "Versione %s, basata su GNOME Terminal %s per GNOME %d"
 
-#: src/terminal-util.cc:234
+#: src/terminal-util.cc:236
 #, c-format
 msgid "Using VTE version %u.%u.%u"
 msgstr "Versione VTE in uso %u.%u.%u"
 
-#: src/terminal-util.cc:240
+#: src/terminal-util.cc:242
 msgid "A fork of GNOME Terminal with renamable tabs and tab groups"
 msgstr "Un fork di GNOME Terminal con schede rinominabili e gruppi di schede"
 
-#: src/terminal-util.cc:257
+#: src/terminal-util.cc:259
 msgid "translator-credits"
 msgstr ""
 "Gianvito Cavasoli <gianvito@gmx.it>\n"
@@ -2165,12 +2410,45 @@ msgstr ""
 "Luca Ferretti <elle.uca@infinito.it>\n"
 "Stefano Canepa <sc@linux.it>"
 
-#: src/terminal-util.cc:332
+#: src/terminal-util.cc:337
 #, c-format
 msgid "Could not open the address “%s”"
 msgstr "Impossibile aprire l'indirizzo «%s»"
 
-#: src/terminal-util.cc:1144
+#: src/terminal-util.cc:420
+msgid ""
+"EasyTerminal is free software: you can redistribute it and/or modify it "
+"under the terms of the GNU General Public License as published by the Free "
+"Software Foundation, either version 3 of the License, or (at your option) "
+"any later version."
+msgstr ""
+"EasyTerminal è software libero; è possibile ridistribuirlo e/o modificarlo "
+"secondo i termini previsti dalla licenza GNU General Public License così "
+"come pubblicata dalla Free Software Foundation, versione 3 della Licenza o "
+"(a scelta) una versione più recente."
+
+#: src/terminal-util.cc:424
+msgid ""
+"EasyTerminal is distributed in the hope that it will be useful, but WITHOUT "
+"ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or "
+"FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for "
+"more details."
+msgstr ""
+"EasyTerminal è distribuito nella speranza che possa risultare utile, ma "
+"SENZA ALCUNA GARANZIA, nemmeno la garanzia implicita di COMMERCIABILITÀ o "
+"APPLICABILITÀ PER UNO SCOPO PARTICOLARE. Per maggiori dettagli consultare la "
+"GNU General Public License."
+
+#: src/terminal-util.cc:428
+msgid ""
+"You should have received a copy of the GNU General Public License along with "
+"EasyTerminal.  If not, see <http://www.gnu.org/licenses/>."
+msgstr ""
+"Una copia della GNU General Public License dovrebbe essere stata fornita con "
+"EasyTerminal. In caso contrario consultare la pagina <http://www.gnu.org/"
+"licenses/>."
+
+#: src/terminal-util.cc:1163
 msgid "“file” scheme with remote hostname not supported"
 msgstr "Schema «file» con un nome host remoto non supportato"
 
@@ -2186,63 +2464,119 @@ msgstr "Salva come…"
 msgid "_Save"
 msgstr "_Salva"
 
-#: src/terminal-window.cc:1959
+#: src/terminal-window.cc:1047
+msgid "New Tab Group"
+msgstr "Nuovo gruppo di schede"
+
+#: src/terminal-window.cc:1048 src/terminal-window.cc:1158
+msgid "_Group name:"
+msgstr "_Nome del gruppo:"
+
+#: src/terminal-window.cc:1157
+msgid "Rename Tab Group"
+msgstr "Rinomina gruppo di schede"
+
+#: src/terminal-window.cc:1204
+msgid "Rename Tab"
+msgstr "Rinomina scheda"
+
+#: src/terminal-window.cc:1205
+msgid "_Tab name (leave empty to use the program’s title):"
+msgstr "_Nome della scheda (vuoto = titolo del programma):"
+
+#: src/terminal-window.cc:1982
 msgid "Open _Hyperlink"
 msgstr "Apri collegamento _ipertestuale"
 
-#: src/terminal-window.cc:1960
+#: src/terminal-window.cc:1983
 msgid "Copy Hyperlink _Address"
 msgstr "Copia i_ndirizzo collegamento ipertestuale"
 
-#: src/terminal-window.cc:1970
+#: src/terminal-window.cc:1993
 msgid "Send Mail _To…"
 msgstr "Invia un'email _a…"
 
-#: src/terminal-window.cc:1971
+#: src/terminal-window.cc:1994
 msgid "Copy Mail _Address"
 msgstr "Copia indirizzo _email"
 
-#: src/terminal-window.cc:1974
+#: src/terminal-window.cc:1997
 msgid "Call _To…"
 msgstr "Chiamata _a…"
 
-#: src/terminal-window.cc:1975
+#: src/terminal-window.cc:1998
 msgid "Copy Call _Address "
 msgstr "Copia _indirizzo di chiamata"
 
-#: src/terminal-window.cc:1980
+#: src/terminal-window.cc:2004
 msgid "_Open Link"
 msgstr "_Apri collegamento"
 
-#: src/terminal-window.cc:1981
+#: src/terminal-window.cc:2005
 msgid "Copy _Link"
 msgstr "Copia _collegamento"
 
-#: src/terminal-window.cc:2037
+#: src/terminal-window.cc:2061
 msgid "P_rofiles"
 msgstr "_Profili"
 
-#: src/terminal-window.cc:2072
+#: src/terminal-window.cc:2096
 msgid "L_eave Full Screen"
 msgstr "Finestra nor_male"
 
-#: src/terminal-window.cc:3570
+#: src/terminal-window.cc:3026
+msgid "Move to _New Group…"
+msgstr "Sposta in nuovo _gruppo…"
+
+#: src/terminal-window.cc:3040
+msgid "Move to _Group"
+msgstr "Sposta nel gr_uppo"
+
+#: src/terminal-window.cc:3043
+msgid "Remove from Gro_up"
+msgstr "R_imuovi dal gruppo"
+
+#: src/terminal-window.cc:3045 src/terminal-window.cc:3072
+msgid "_Collapse Group"
+msgstr "C_omprimi gruppo"
+
+#: src/terminal-window.cc:3072
+msgid "_Expand Group"
+msgstr "_Espandi gruppo"
+
+#: src/terminal-window.cc:3075
+msgid "Re_name Group…"
+msgstr "Ri_nomina gruppo…"
+
+#: src/terminal-window.cc:3078
+msgid "_Ungroup"
+msgstr "_Sciogli gruppo"
+
+#: src/terminal-window.cc:3634
 msgid "Close this window?"
 msgstr "Chiudere questa finestra?"
 
-#: src/terminal-window.cc:3570
+#: src/terminal-window.cc:3634
 msgid "Close this terminal?"
 msgstr "Chiudere questo terminale?"
 
-#: src/terminal-window.cc:3574
-msgid "There are still processes running in some terminals in this window. Closing the window will kill all of them."
-msgstr "Alcuni processi all'interno dei terminali di questa finestra sono ancora in esecuzione. Chiudendo la finestra verranno terminati tutti i processi."
+#: src/terminal-window.cc:3638
+msgid ""
+"There are still processes running in some terminals in this window. Closing "
+"the window will kill all of them."
+msgstr ""
+"Alcuni processi all'interno dei terminali di questa finestra sono ancora in "
+"esecuzione. Chiudendo la finestra verranno terminati tutti i processi."
 
-#: src/terminal-window.cc:3578
-msgid "There is still a process running in this terminal. Closing the terminal will kill it."
-msgstr "Un processo in questo terminale è ancora in esecuzione. Chiudendo il terminale verrà interrotto il processo."
+#: src/terminal-window.cc:3642
+msgid ""
+"There is still a process running in this terminal. Closing the terminal will "
+"kill it."
+msgstr ""
+"Un processo in questo terminale è ancora in esecuzione. Chiudendo il "
+"terminale verrà interrotto il processo."
 
-#: src/terminal-window.cc:3583
+#: src/terminal-window.cc:3647
 msgid "C_lose Window"
 msgstr "Chiudi _finestra"
 
@@ -2250,11 +2584,3 @@ msgstr "Chiudi _finestra"
 #, c-format
 msgid "Failed to parse arguments: %s\n"
 msgstr "Analisi degli argomenti non riuscita: %s\n"
-
-#: src/terminal-tab-group.cc
-msgid "Click to expand the group"
-msgstr "Clic per espandere il gruppo"
-
-#: src/terminal-tab-group.cc
-msgid "Click to collapse the group"
-msgstr "Clic per comprimere il gruppo"

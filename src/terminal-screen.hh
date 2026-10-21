@@ -32,6 +32,7 @@ typedef enum {
   FLAVOR_VOIP_CALL,
   FLAVOR_EMAIL,
   FLAVOR_NUMBER,
+  FLAVOR_LP
 } TerminalURLFlavor;
 
 /* Forward decls */
@@ -114,6 +115,8 @@ GSettings* terminal_screen_get_profile (TerminalScreen *screen);
 GSettings* terminal_screen_ref_profile (TerminalScreen *screen);
 
 const char* terminal_screen_get_title          (TerminalScreen *screen);
+GdkRGBA*    terminal_screen_get_bg_color       (TerminalScreen *screen);
+GdkRGBA*    terminal_screen_get_fg_color       (TerminalScreen *screen);
 
 const char* terminal_screen_get_user_title     (TerminalScreen *screen);
 void        terminal_screen_set_user_title     (TerminalScreen *screen,

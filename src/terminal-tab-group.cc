@@ -61,15 +61,15 @@ install_css_once (void)
   /* Adwaita tones: green, orange, purple, red, brown, blue. Blue comes last
    * because it is also Adwaita's "current tab" underline. */
   static const char css[] =
-    ".et-group-member { border-bottom: 3px solid transparent; }\n"
+    ".et-group-member { border-top: 3px solid transparent; }\n"
     ".et-group-first { border-left: 1px solid alpha(currentColor, 0.25); padding-left: 6px; }\n"
     ".et-group-last { border-right: 1px solid alpha(currentColor, 0.25); padding-right: 6px; }\n"
-    ".et-group-c0 { border-bottom-color: #33d17a; }\n"
-    ".et-group-c1 { border-bottom-color: #ff7800; }\n"
-    ".et-group-c2 { border-bottom-color: #9141ac; }\n"
-    ".et-group-c3 { border-bottom-color: #e01b24; }\n"
-    ".et-group-c4 { border-bottom-color: #986a44; }\n"
-    ".et-group-c5 { border-bottom-color: #3584e4; }\n"
+    ".et-group-c0 { border-top-color: #33d17a; }\n"
+    ".et-group-c1 { border-top-color: #ff7800; }\n"
+    ".et-group-c2 { border-top-color: #9141ac; }\n"
+    ".et-group-c3 { border-top-color: #e01b24; }\n"
+    ".et-group-c4 { border-top-color: #986a44; }\n"
+    ".et-group-c5 { border-top-color: #3584e4; }\n"
     ".et-group-chip { border-radius: 6px; padding: 0 8px; color: #ffffff; font-weight: bold; }\n"
     ".et-group-chip.et-group-c0 { background-color: #26a269; }\n"
     ".et-group-chip.et-group-c1 { background-color: #e66100; }\n"
@@ -77,6 +77,13 @@ install_css_once (void)
     ".et-group-chip.et-group-c3 { background-color: #c01c28; }\n"
     ".et-group-chip.et-group-c4 { background-color: #865e3c; }\n"
     ".et-group-chip.et-group-c5 { background-color: #3584e4; }\n"
+    ".et-group-handle { border-radius: 6px; min-width: 0; min-height: 0; padding: 0 2px; color: #ffffff; }\n"
+    ".et-group-handle.et-group-c0 { background-color: #26a269; }\n"
+    ".et-group-handle.et-group-c1 { background-color: #e66100; }\n"
+    ".et-group-handle.et-group-c2 { background-color: #9141ac; }\n"
+    ".et-group-handle.et-group-c3 { background-color: #c01c28; }\n"
+    ".et-group-handle.et-group-c4 { background-color: #865e3c; }\n"
+    ".et-group-handle.et-group-c5 { background-color: #3584e4; }\n"
     ".et-group-chip.et-group-chip-active { box-shadow: inset 0 -3px alpha(#ffffff, 0.8); }\n";
 
   GtkCssProvider *provider = gtk_css_provider_new ();
@@ -244,13 +251,13 @@ refresh (TerminalTabGroups *m)
 
     if (group == nullptr) {
       terminal_tab_label_set_chip (label, nullptr, -1, FALSE);
-      terminal_tab_label_set_group_style (label, -1, FALSE, FALSE);
+      terminal_tab_label_set_group_style (label, -1, FALSE, FALSE, nullptr);
       gtk_notebook_set_tab_reorderable (m->notebook, child, TRUE);
       continue;
     }
 
     if (group->collapsed && group->representative == screen) {
-      terminal_tab_label_set_group_style (label, -1, FALSE, FALSE);
+      terminal_tab_label_set_group_style (label, -1, FALSE, FALSE, nullptr);
       terminal_tab_label_set_chip (label, group->name, group->color,
                                    group_of (current) == group);
       /* The chip is not draggable: dragging it would pull one tab out */
@@ -261,7 +268,8 @@ refresh (TerminalTabGroups *m)
     terminal_tab_label_set_chip (label, nullptr, -1, FALSE);
     terminal_tab_label_set_group_style (label, group->color,
                                         group_of (screen_at (m, i - 1)) != group,
-                                        group_of (screen_at (m, i + 1)) != group);
+                                        group_of (screen_at (m, i + 1)) != group,
+                                        group->name);
     gtk_notebook_set_tab_reorderable (m->notebook, child, TRUE);
   }
 }

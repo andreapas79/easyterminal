@@ -108,6 +108,24 @@ close_button_clicked_cb (TerminalTabLabel *tab_label,
 }
 
 
+/* EasyTerminal: the collapse button before an expanded group's tabs */
+static void
+group_collapse_clicked_cb (TerminalTabLabel *tab_label,
+                           gpointer user_data)
+{
+  TerminalScreen *screen = terminal_tab_label_get_screen (tab_label);
+  /* Looked up like in close_button_clicked_cb: the tab may have moved */
+  TerminalNotebook *notebook = TERMINAL_NOTEBOOK (gtk_widget_get_ancestor (GTK_WIDGET (screen),
+                                                                           TERMINAL_TYPE_NOTEBOOK));
+  if (notebook == nullptr)
+    return;
+
+  TerminalTabGroups *groups = notebook->priv->tab_groups;
+  TerminalTabGroup *group = terminal_tab_groups_get_group_of (groups, screen);
+  if (group != nullptr)
+    terminal_tab_groups_collapse (groups, group);
+}
+
 static void
 remove_reorder_bindings (GtkBindingSet    *binding_set,
                          guint             keysym)
@@ -138,6 +156,8 @@ terminal_notebook_add_screen (TerminalMdiContainer *container,
   tab_label = terminal_tab_label_new (screen);
   g_signal_connect (tab_label, "close-button-clicked",
                     G_CALLBACK (close_button_clicked_cb), nullptr);
+  g_signal_connect (tab_label, "group-collapse-clicked",
+                    G_CALLBACK (group_collapse_clicked_cb), nullptr);
 
   gtk_notebook_insert_page (gtk_notebook,
                             screen_container,

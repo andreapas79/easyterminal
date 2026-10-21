@@ -65,7 +65,8 @@ TerminalScreen *terminal_tab_label_get_screen (TerminalTabLabel *tab_label);
 void            terminal_tab_label_set_group_style (TerminalTabLabel *tab_label,
                                                     int color,
                                                     gboolean first,
-                                                    gboolean last);
+                                                    gboolean last,
+                                                    const char *group_name);
 void            terminal_tab_label_set_chip        (TerminalTabLabel *tab_label,
                                                     const char *name,
                                                     int color,

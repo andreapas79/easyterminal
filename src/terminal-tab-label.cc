@@ -42,6 +42,7 @@ struct _TerminalTabLabelPrivate
 
   /* EasyTerminal tab groups */
   GtkWidget *chip;   /* shown instead of label+close button when collapsed */
+  GtkWidget *group_handle; /* collapse button on the first tab of an expanded group */
   int group_color;   /* -1: not in a group */
   gboolean is_chip;
 };
@@ -55,6 +56,7 @@ enum
 enum
 {
   CLOSE_BUTTON_CLICKED,
+  GROUP_COLLAPSE_CLICKED,
   LAST_SIGNAL
 };
 
@@ -63,6 +65,13 @@ static guint signals[LAST_SIGNAL];
 G_DEFINE_TYPE (TerminalTabLabel, terminal_tab_label, GTK_TYPE_BOX);
 
 /* helper functions */
+
+static void
+group_handle_clicked_cb (GtkWidget *widget,
+                         TerminalTabLabel *tab_label)
+{
+  g_signal_emit (tab_label, signals[GROUP_COLLAPSE_CLICKED], 0);
+}
 
 static void
 close_button_clicked_cb (GtkWidget *widget,
@@ -229,6 +238,14 @@ terminal_tab_label_constructed (GObject *object)
   gtk_label_set_single_line_mode (GTK_LABEL (priv->chip), TRUE);
   gtk_style_context_add_class (gtk_widget_get_style_context (priv->chip), "et-group-chip");
   gtk_box_pack_start (GTK_BOX (hbox), priv->chip, FALSE, FALSE, 0);
+
+  /* EasyTerminal: small coloured button before an expanded group's tabs;
+   * clicking it collapses the group */
+  priv->group_handle = terminal_icon_button_new ("pan-start-symbolic");
+  gtk_style_context_add_class (gtk_widget_get_style_context (priv->group_handle), "et-group-handle");
+  gtk_box_pack_start (GTK_BOX (hbox), priv->group_handle, FALSE, FALSE, 0);
+  g_signal_connect (priv->group_handle, "clicked",
+                    G_CALLBACK (group_handle_clicked_cb), tab_label);
 }
 
 static void
@@ -313,6 +330,16 @@ terminal_tab_label_class_init (TerminalTabLabelClass *klass)
                   G_OBJECT_CLASS_TYPE (gobject_class),
                   G_SIGNAL_RUN_LAST,
                   G_STRUCT_OFFSET (TerminalTabLabelClass, close_button_clicked),
+                  nullptr, nullptr,
+                  g_cclosure_marshal_VOID__VOID,
+                  G_TYPE_NONE,
+                  0);
+
+  signals[GROUP_COLLAPSE_CLICKED] =
+    g_signal_new (I_("group-collapse-clicked"),
+                  G_OBJECT_CLASS_TYPE (gobject_class),
+                  G_SIGNAL_RUN_LAST,
+                  0,
                   nullptr, nullptr,
                   g_cclosure_marshal_VOID__VOID,
                   G_TYPE_NONE,
@@ -444,17 +471,28 @@ set_class (GtkWidget *widget,
  * terminal_tab_label_set_group_style:
  * @color: the group's colour index, or -1 when the tab is in no group
  * @first, @last: whether the tab is the first/last of its group
+ * @group_name: the group's name (tooltip of the collapse button)
  *
- * Shows the coloured underline of an expanded group's member.
+ * Shows the coloured band of an expanded group's member, and the collapse
+ * button on the group's first tab.
  */
 void
 terminal_tab_label_set_group_style (TerminalTabLabel *tab_label,
                                     int color,
                                     gboolean first,
-                                    gboolean last)
+                                    gboolean last,
+                                    const char *group_name)
 {
   TerminalTabLabelPrivate *priv = tab_label->priv;
   GtkWidget *widget = GTK_WIDGET (tab_label);
+
+  gboolean show_handle = color >= 0 && first;
+  gtk_widget_set_visible (priv->group_handle, show_handle);
+  if (show_handle) {
+    set_color_class (priv->group_handle, color);
+    gs_free char *tooltip = g_strdup_printf (_("Collapse group “%s”"), group_name);
+    gtk_widget_set_tooltip_text (priv->group_handle, tooltip);
+  }
 
   priv->group_color = color;
   set_class (widget, "et-group-member", color >= 0);

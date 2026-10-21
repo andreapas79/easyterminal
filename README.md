@@ -1,122 +1,46 @@
-GNOME TErminal
-==============
+# EasyTerminal
 
-Source & Releases
------------------
+A fork of [GNOME Terminal](https://gitlab.gnome.org/GNOME/gnome-terminal) 3.44.0
+(GTK 3, VTE 0.68) that adds:
 
-To get the source code, use
-```
-$ git clone https://gitlab.gnome.org/GNOME/gnome-terminal
-```
+- **Tab renaming** – right-click a tab → *Rename Tab…*. The name stays even
+  when the running program changes the title.
+- **Tab groups** – right-click a tab → *Move to New Group…*. Each group has a
+  coloured, named pill before its tabs: click it to collapse or expand the
+  group, right-click it to rename or ungroup.
 
-To get the source for a release version, use the corresponding git tag, or
-download a tarball at
-https://gitlab.gnome.org/GNOME/gnome-terminal/-/archive/TAG/gnome-terminal-TAG.tar.bz2
-replacing `TAG` with the desired tag's name (e.g. `3.40.0`). Older releases are also
-available at https://download.gnome.org/sources/gnome-terminal .
+EasyTerminal installs next to GNOME Terminal without touching it: its own app
+ID (`io.github.andreapas79.easyterminal`), binaries, settings and D-Bus
+service. Built and tested on Pop!_OS 22.04 / Ubuntu 22.04.
 
-Building from source
---------------------
+## Install
 
-You will most likely need to also build `vte` from source; see https://gitlab.gnome.org/GNOME/vte/-/blob/master/README.md .
+Download the `.deb` from the releases page and run:
 
-Start by installing the build dependencies, and a C++ compiler.
-
-For fedora and related distributions, use
-```
-sudo dnf build-dep vte291 gnome-terminal
-sudo dnf install g++
-```
-while for debian and related distributions, use
-```
-sudo apt-get build-dep libvte-2.91-0 gnome-terminal
-sudo apt-get install g++
+```sh
+sudo apt install ./easyterminal_3.44.0-1easy1_amd64.deb
 ```
 
-First build `vte` according to its own instructions. Then:
-```
-$ # Get the source code
-$ git clone https://gitlab.gnome.org/GNOME/gnome-terminal
-$
-$ # Change to the toplevel directory
-$ cd gnome-terminal
-$
-$ # Run the configure script (choose an appropriate path instead of "/some/where"!)
-$ # Don't forget to make sure that pkg-config can find your self-build vte!
-$ # e.g. by doing:
-$ # export PKG_CONFIG_PATH=/some/where/lib64/pkg-config:$PKG_CONFIG_PATH
-$ #
-$ # If you compiled gnome-shell into the same prefix, you can omit disabling
-$ # the search provider.
-$ #
-$ meson _build --prefix=/some/where -Dsearch_provider=false
-$
-$ # Build
-$ ninja -C _build
-$
-$ # Install
-$ ninja -C _build install
+To open it with Super+T instead of GNOME Terminal:
+
+```sh
+gsettings set org.gnome.desktop.default-applications.terminal exec 'easyterminal'
 ```
 
-* By default, GNOME Terminal will install under `/usr/local`, which is not usually
-the right choice. You can customize the prefix directory by `--prefix` option, e.g.
-if you want to install GNOME-TERMINAL under `~/foobar`, you should run
-`meson _build --prefix=$HOME/foobar`. If you already run the configure script before,
-you should also pass `--reconfigure` option to it.
+## Build
 
-* You may need to execute `ninja -C _build install` as root
-(i.e. `sudo ninja -C _build install`) if installing to system directories. Use a
-user-writable directory as `--prefix` instead to avoid that.
+```sh
+sudo apt install debhelper meson ninja-build pkg-config gettext \
+  libglib2.0-dev libgtk-3-dev libvte-2.91-dev libdconf-dev \
+  gsettings-desktop-schemas-dev libpcre2-dev uuid-dev libx11-dev \
+  xsltproc docbook-xsl docbook-xml libxml2-utils desktop-file-utils
 
-* You may need to set the gsettings schema path so that gnome-terminal can find
-its schemas. E.g. use
-```
-$ export GSETTINGS_SCHEMA_DIR=/some/where/share/glib-2.0/schemas
-```
-and if you skipped the `ninja install` step, you need to create the
-gsettings schema cache yourself.
-
-* Since GNOME Terminal uses a D-Bus activated server, you cannot simply run
-the self-built gnome-terminal directly. Instead, you need to start the new `gnome-terminal-server` directly using
-```
-$ ./_build/src/gnome-terminal-server --app-id test.Terminal &
-```
-and then you have 10s time to open a window in that server using
-```
-$ ./_build/src/gnome-terminal --app-id test.Terminal
+./build.sh        # build in ./build
+./run-dev.sh      # run from the build tree (settings kept in memory only)
+./build.sh deb    # build the .deb (written to the parent directory)
 ```
 
-Also see https://wiki.gnome.org/Apps/Terminal/Debugging for more information.
+## License
 
-Debugging
----------
-
-After installing GNOME-TERMINAL with `-Ddebugg=true` flag, you can use `GNOME-TERMINAL_DEBUG` variable to control
-GNOME-TERMINAL to print out the debug information
-
-```
-# You should change gnome-terminal-[2.91] to the version you build
-$ GNOME-TERMINAL_DEBUG=selection ./_build/src/app/gnome-terminal-2.91
-
-# Or, you can mixup with multiple logging level
-$ GNOME-TERMINAL_DEBUG=selection,draw,cell ./_build/src/app/gnome-terminal-2.91
-
-$ Or, you can use `all` to print out all logging message
-$ GNOME-TERMINAL_DEBUG=all ./_build/src/app/gnome-terminal-2.91
-```
-
-For logging level information, please refer to enum [Gnome-TerminalDebugFlags](src/debug.h).
-
-Contributing
-------------
-
-Bugs should be filed here: https://gitlab.gnome.org/GNOME/gnome-terminal/issues/
-Please note that this is a bug tracker to be used for developers of GNOME Terminal,
-and contributors of code, documentation, and translations to GNOME Terminal,
-and *not a support forum*.
-
-If you are an end user, always file bugs in your distribution's bug tracker, or use their
-support forums.
-
-If you want to provide a patch, please attach them to an issue in GNOME
-GitLab, in the format output by the `git format-patch` command.
+GPL-3.0-or-later, like GNOME Terminal. The original GNOME Terminal README is
+in [README.gnome-terminal.md](README.gnome-terminal.md).
